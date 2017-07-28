@@ -23,7 +23,7 @@ void StateCredits::onStart()
 		->setSize(20)->setStr("Maciej  \"Risist\"  Dominiak"); pos.y += offsetY;
 
 	Gui::gui.add(new Gui::Text("gui_text.txt"))->setPos(pos)
-		->setSize(20)->setStr("--------------"); pos.y += offsetY;
+		->setSize(20)->setStr("Maksymilian Zawartko"); pos.y += offsetY;
 
 	Gui::gui.add(new Gui::Text("gui_text.txt"))->setPos(pos)
 		->setSize(20)->setStr("--------------"); pos.y += offsetY;
