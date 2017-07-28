@@ -77,6 +77,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)\..\External\thor\include;$(SolutionDir)\..\ReEngine;$(SolutionDir)\..\External\Box2D-master\Box2D\Include;$(SolutionDir)\..\External\SFML-2.4.1\include;$(SolutionDir)\..\External\ReEngine\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\..\External\thor\lib;$(SolutionDir)\..\External\SFML-2.4.1\lib;$(SolutionDir)\..\External\Box2D-master\Box2D\Lib;$(SolutionDir)\..\External\ReEngine\Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
