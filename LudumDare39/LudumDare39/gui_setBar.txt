@@ -1,0 +1,9 @@
+<type =SetBar; halfWhX = 100; halfWhY = 13; 
+		buttonSize = 15; txtSize=20; 
+		backClR = 150; backClG = 150; backClB = 150;
+		
+		onClR = 100; onClG = 75; onClB = 75;
+		outClR = 50; outClG = 50; outClB = 50;
+		pressClR = 150; pressClG = 100; pressClB = 100; 
+		timerCd = 0.175;
+	>

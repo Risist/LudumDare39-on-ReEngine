@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Layers.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ActorBlood.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="StateGame.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMenu.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="StateCredits.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Layers.h" />
+    <ClInclude Include="ActorBlood.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="StateGame.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMenu.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateCredits.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{2e241b0e-15ba-4d7c-80af-1fb7b1143f2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actors">
+      <UniqueIdentifier>{9a743c9c-4145-4015-a215-48a842e300e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States">
+      <UniqueIdentifier>{c37deea1-8a40-48c0-a029-df4c11ac866c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\models">
+      <UniqueIdentifier>{cf49c9ae-6e82-47a6-8815-b5e04ba0e651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\animations">
+      <UniqueIdentifier>{887f2d69-ea6c-4a86-8447-901527537448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Gui">
+      <UniqueIdentifier>{2222afa3-d290-461d-be93-5045c9cf1c93}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources.txt">
+      <Filter>Resource</Filter>
+    </Text>
+    <Text Include="model_humanoid.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="model_blood.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="model_background.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="gui_background.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_button.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_buttonHalf.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_checkBox.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_colorBar.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_setBar.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_text.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,5 @@
+<type =NamedButton; 
+		onClR = 60; onClG = 75; onClB = 60;
+		outClR = 60; outClG = 75; outClB = 60;
+		pressClR = 60; pressClG = 75; pressClB = 60;
+	>

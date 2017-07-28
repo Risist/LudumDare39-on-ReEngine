@@ -1,0 +1,8 @@
+<type = ColorBar; halfWhX = 100; halfWhY = 7;
+		butonSize = 15; barOffset = 18;
+		barClR = 250; barClG = 250; barClB = 250;
+		
+		onClR = 100; onClG = 75; onClB = 75;
+		outClR = 50; outClG = 50; outClB = 50;
+		pressClR = 150; pressClG = 100; pressClB = 100; 
+	>

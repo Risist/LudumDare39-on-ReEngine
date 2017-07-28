@@ -1,0 +1,28 @@
+< 
+	prepathGraphics =..\\..\\Resources\\Graphics\\; 
+	prepathFont =..\\..\\Resources\\Fonts\\;
+	prepathSound =..\\..\\Resources\\Audio\\;
+	prepathScripts =..\\..\\Resources\\Audio\\;
+>
+	
+	/// graphics
+	< type =atlas; path =Terrain\\grass.png;		atlasId =100>
+
+	< type =atlas; path =shiveil\\arm2dk.png;		atlasId =200>
+	< type =atlas; path =shiveil\\armdk.png;		atlasId =201>
+	< type =atlas; path =shiveil\\headdk--.png;		atlasId =202>
+	< type =atlas; path =shiveil\\shieldDk.png;		atlasId =203>
+	< type =atlas; path =shiveil\\weaponDk.png;		atlasId =204>
+	< type =atlas; path =shiveil\\axe_stick.png;	atlasId =205>
+	< type =atlas; path =shiveil\\axe_blade.png;	atlasId =206>
+
+	
+	< type =atlas;	path =Blood\\blood2.png;		atlasId =300>
+
+	< type =font;	path =Akv.ttf;					id =1>
+
+	/// scripts
+	< type =script;	path =model_humanoid.txt;		id =1>
+	< type =script;	path =model_background.txt;		id =2>
+	< type =script;	path =model_blood.txt;			id =3>
+<\>

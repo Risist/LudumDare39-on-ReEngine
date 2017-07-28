@@ -1,0 +1,6 @@
+<type =CheckBox; halfWhX = 13; halfWhY = 13; 
+		onClR = 100; onClG = 75; onClB = 75;
+		outClR = 50; outClG = 50; outClB = 50;
+		pressClR = 150; pressClG = 100; pressClB = 100; 
+		initialState = 1;
+	>
