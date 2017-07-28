@@ -1,5 +1,6 @@
 #pragma once
 #include <Re\ReEngine.h>
+#include "Player.h"
 
 /// Main game state
 /// Controlls all events within game like spawning characters
@@ -26,4 +27,5 @@ protected: /// spawn functions
 
 	/// creates and adds simple obstacle - for testing
 	Game::Actor* addObstacle(const Vector2D& position, Angle rotation = Angle::zero);
+
 };

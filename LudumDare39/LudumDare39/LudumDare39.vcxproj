@@ -164,6 +164,7 @@
     <Text Include="gui_buttonHalf.txt" />
     <Text Include="gui_checkBox.txt" />
     <Text Include="gui_colorBar.txt" />
+    <Text Include="gui_healthBar.txt" />
     <Text Include="gui_setBar.txt" />
     <Text Include="gui_text.txt" />
     <Text Include="model_background.txt" />

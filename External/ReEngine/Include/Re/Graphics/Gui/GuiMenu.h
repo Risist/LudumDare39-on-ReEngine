@@ -37,6 +37,10 @@ namespace Gui
 			return el[id];
 		}
 
+		void remove(size_t id);
+		void remove(Gui::Base *ptr);
+		void remove(shared_ptr<Gui::Base> ptr);
+
 		/// remove all menu elements
 		void clear();
 		/// how many gui elements are contained?

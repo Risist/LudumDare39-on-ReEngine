@@ -15,7 +15,9 @@
     <ClCompile Include="StateMenu.cpp">
       <Filter>States</Filter>
     </ClCompile>
-    <ClCompile Include="StateCredits.cpp" />
+    <ClCompile Include="StateCredits.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Layers.h" />
@@ -31,7 +33,9 @@
     <ClInclude Include="StateMenu.h">
       <Filter>States</Filter>
     </ClInclude>
-    <ClInclude Include="StateCredits.h" />
+    <ClInclude Include="StateCredits.h">
+      <Filter>States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource">
@@ -85,6 +89,9 @@
       <Filter>Resource\Gui</Filter>
     </Text>
     <Text Include="gui_text.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_healthBar.txt">
       <Filter>Resource\Gui</Filter>
     </Text>
   </ItemGroup>

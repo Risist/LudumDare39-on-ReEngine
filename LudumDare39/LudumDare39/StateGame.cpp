@@ -1,8 +1,6 @@
 #include "StateGame.h"
 #include "Layers.h"
 
-#include "Player.h"
-
 void StateGame::onStart()
 {
 	/// game settings
@@ -16,6 +14,7 @@ void StateGame::onStart()
 	/// insert game objects
 	addBackground(Vector2D());
 	Game::world.addActor(new Player(), Game::Layers::character);
+	
 
 	for (int i = 0; i < 50; ++i)
 		addObstacle(Vector2D(0, randRange(100.f, 5500.f)).getRotated(), randRange(Angle::zero, Angle::full) );

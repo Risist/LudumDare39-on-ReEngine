@@ -36,6 +36,28 @@ namespace Gui
 		el.push_back(s);
 		s->setHidden(hidden);
 	}
+	void Menu::remove(size_t id)
+	{
+		el.erase(el.begin() + id);
+	}
+	void Menu::remove(Gui::Base * ptr)
+	{
+		for (auto it = el.begin(); it != el.end(); ++it)
+			if ((*it).get() == ptr)
+			{
+				el.erase(it);
+				return;
+			}
+	}
+	void Menu::remove(shared_ptr<Gui::Base> ptr)
+	{
+		for (auto it = el.begin(); it != el.end(); ++it)
+			if ((*it) == ptr)
+			{
+				el.erase(it);
+				return;
+			}
+	}
 	void Menu::clear()
 	{
 		el.clear();
