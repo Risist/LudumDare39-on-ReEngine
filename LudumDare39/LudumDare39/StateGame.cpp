@@ -22,6 +22,8 @@ void StateGame::onStart()
 
 Game::State * StateGame::onUpdate(sf::Time dt)
 {
+	sf::Sprite s(sf::Texture());
+
 	Game::world.onUpdate(dt);
 	cam.display(wnd);
 
