@@ -10,6 +10,6 @@ public:
 	virtual void onInit() override;
 	virtual void onUpdate(sf::Time dt) override;
 
-
+	Efect::MovementAim *efMovement;
 };
 

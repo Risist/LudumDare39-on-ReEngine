@@ -1,4 +1,6 @@
 #include "ActorBonfire.h"
+#include "ActorFireball.h"
+#include "Layers.h"
 
 
 
@@ -12,10 +14,10 @@ void ActorBonfire::onInit()
 
 	addEfect(new Efect::Model((ResId)4));
 	addEfect(new Efect::Rigidbody());
-	addEfect(new Efect::ColliderCircle(75.f));
-	addEfect(new Efect::DamageOnCollision(0.075));
+	addEfect(new Efect::ColliderCircle(75.f, 1.f, Vector2D(), true));
+	addEfect(new Efect::DamageOnCollision(10.75));
 
-	efLight = addEfect(new EfectLightSource(50, 0.0005, 1));
+	efLight = addEfect(new EfectLightSource(0, 0.000325, 0.95));
 
 	addEfect(new Efect::Particle())->addEmitter(
 		Emitter().setEmissionRate(120).setLifetime([]() { return sf::seconds(randRange(0.5f, 1.f)); })
@@ -35,6 +37,15 @@ void ActorBonfire::onInit()
 				return Color(200*d, 180*d, 180*d, randRange(30, 40)); 
 			})
 	)->setTexture(ResId(401));
+
+			
+	addEfect(new Efect::Throw)->addData([=]() 
+	{
+		return new ActorFireball(Vector2D(cam.mapPixelToCoords(Mouse::getPosition(wnd))).angle());
+	})
+		
+		->setDataLayer(Game::Layers::bullet)
+		;
 }
 
 void ActorBonfire::onUpdate(sf::Time dt)
@@ -42,6 +53,6 @@ void ActorBonfire::onUpdate(sf::Time dt)
 	Actor::onUpdate(dt);
 
 	efLight->maxIntensitivityRatio += randRange(-0.006, 0.0075);
-	efLight->maxIntensitivityRatio = clamp(efLight->maxIntensitivityRatio, 0.8f, 0.995f);
+	efLight->maxIntensitivityRatio = clamp(efLight->maxIntensitivityRatio, 0.85f, 0.985f);
 	
 }
