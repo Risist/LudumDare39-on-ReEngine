@@ -145,7 +145,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActorBlood.cpp" />
+    <ClCompile Include="ActorBonfire.cpp" />
+    <ClCompile Include="EfectLightSource.cpp" />
     <ClCompile Include="Layers.cpp" />
+    <ClCompile Include="LightController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="StateCredits.cpp" />
@@ -154,7 +157,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActorBlood.h" />
+    <ClInclude Include="ActorBonfire.h" />
+    <ClInclude Include="EfectLightSource.h" />
     <ClInclude Include="Layers.h" />
+    <ClInclude Include="LightController.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="StateCredits.h" />
     <ClInclude Include="StateGame.h" />
@@ -171,6 +177,7 @@
     <Text Include="gui_text.txt" />
     <Text Include="model_background.txt" />
     <Text Include="model_blood.txt" />
+    <Text Include="model_bonfire.txt" />
     <Text Include="model_humanoid.txt" />
     <Text Include="Resources.txt" />
   </ItemGroup>

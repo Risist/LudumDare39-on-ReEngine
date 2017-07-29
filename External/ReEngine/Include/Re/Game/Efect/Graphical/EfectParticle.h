@@ -89,7 +89,7 @@ namespace Efect
 		}
 		Particle* setTexture(ResId id)
 		{ 
-			//particleSystem.setTexture(tsInst[id]); 
+			particleSystem.setTexture(atlasInst[id]);
 			return this;
 		}
 		

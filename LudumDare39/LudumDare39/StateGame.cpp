@@ -1,5 +1,7 @@
 #include "StateGame.h"
 #include "Layers.h"
+#include "ActorBonfire.h"
+#include "LightController.h"
 
 void StateGame::onStart()
 {
@@ -13,11 +15,13 @@ void StateGame::onStart()
 
 	/// insert game objects
 	addBackground(Vector2D());
-	Game::world.addActor(new Player(), Game::Layers::character);
-	
+	auto player = Game::world.addActor(new Player(), Game::Layers::character);
+	lightController.observer = player;
 
 	for (int i = 0; i < 50; ++i)
 		addObstacle(Vector2D(0, randRange(100.f, 5500.f)).getRotated(), randRange(Angle::zero, Angle::full) );
+
+	Game::world.addActor(new ActorBonfire, Game::Layers::obstacle);
 }
 
 Game::State * StateGame::onUpdate(sf::Time dt)
@@ -26,7 +30,8 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 
 	Game::world.onUpdate(dt);
 	cam.display(wnd);
-
+	
+	lightController.update(cam);
 
 	if (actionMap.isActive("restart"))
 		return new StateGame;
