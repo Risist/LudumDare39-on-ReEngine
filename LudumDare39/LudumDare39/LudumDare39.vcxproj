@@ -146,6 +146,8 @@
   <ItemGroup>
     <ClCompile Include="ActorBlood.cpp" />
     <ClCompile Include="ActorBonfire.cpp" />
+    <ClCompile Include="ActorFireball.cpp" />
+    <ClCompile Include="ActorPrayer.cpp" />
     <ClCompile Include="EfectLightSource.cpp" />
     <ClCompile Include="Layers.cpp" />
     <ClCompile Include="LightController.cpp" />
@@ -158,6 +160,8 @@
   <ItemGroup>
     <ClInclude Include="ActorBlood.h" />
     <ClInclude Include="ActorBonfire.h" />
+    <ClInclude Include="ActorFireball.h" />
+    <ClInclude Include="ActorPrayer.h" />
     <ClInclude Include="EfectLightSource.h" />
     <ClInclude Include="Layers.h" />
     <ClInclude Include="LightController.h" />

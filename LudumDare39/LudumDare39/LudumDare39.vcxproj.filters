@@ -27,6 +27,10 @@
     <ClCompile Include="EfectLightSource.cpp">
       <Filter>light</Filter>
     </ClCompile>
+    <ClCompile Include="ActorPrayer.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorFireball.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Layers.h" />
@@ -54,6 +58,10 @@
     <ClInclude Include="EfectLightSource.h">
       <Filter>light</Filter>
     </ClInclude>
+    <ClInclude Include="ActorPrayer.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorFireball.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource">

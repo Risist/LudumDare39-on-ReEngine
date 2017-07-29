@@ -2,6 +2,7 @@
 #include "Layers.h"
 #include "ActorBonfire.h"
 #include "LightController.h"
+#include "ActorPrayer.h"
 
 void StateGame::onStart()
 {
@@ -14,36 +15,55 @@ void StateGame::onStart()
 	cam.setAlpha(1.f);
 
 	/// insert game objects
-	//addBackground(Vector2D());
-	auto player = Game::world.addActor(new Player(), Game::Layers::character);
+
+	auto player = addPlayer(Vector2D(0, 200));
+  
 	lightController.observer = player;
 
-	for (int i = 0; i < 50; ++i)
-		addObstacle(Vector2D(0, randRange(100.f, 5500.f)).getRotated(), randRange(Angle::zero, Angle::full) );
+	for (int i = 0; i < 15; ++i)
+		addObstacle(Vector2D(0, randRange(1150.f, 1500.f)).getRotated(), randRange(Angle::zero, Angle::full) );
 
 	Game::world.addActor(new ActorBonfire, Game::Layers::obstacle);
+
+	for (int i = 0; i < 10; ++i)
+		addPrayer(Vector2D(0, randRange(1100.f, 1600.f)).getRotated(), randRange(Angle::zero, Angle::full));
 }
 
 Game::State * StateGame::onUpdate(sf::Time dt)
 {
-	sf::Sprite s;
-	s.setTexture(atlasInst[207]);
-	s.setOrigin(s.getTextureRect().width / 2, s.getTextureRect().height / 2);
-
-	for (int i = -5; i < 5; i++) {
-		s.scale(-1, 1);
 	
-		for (int j = -5; j < 5; j++) {
-			s.setPosition(i * s.getTextureRect().width, j * s.getTextureRect().height);
-			s.scale(1, -1);
+	{
+		sf::Sprite s;
+		s.setTexture(atlasInst[207]);
+		s.setOrigin(s.getTextureRect().width / 2, s.getTextureRect().height / 2);
+
+		for (int i = -5; i < 5; i++) {
+			s.scale(-1, 1);
+
+			for (int j = -5; j < 5; j++) {
+				s.setPosition(i * s.getTextureRect().width, j * s.getTextureRect().height);
+				s.scale(1, -1);
+				cam.draw(s);
+			}
+		}
+	}
+	{
+		sf::Sprite s;
+		s.setTexture(atlasInst[100]);
+		s.setOrigin(s.getTextureRect().width / 2, s.getTextureRect().height / 2);
+		s.setScale(1.75f, 1.75f);
+		s.setColor(Color(200,180,180,50));
+		for (int i = 0; i < 10; ++i)
+		{
 			cam.draw(s);
+			s.scale(0.999, 0.999f);
 		}
 	}
 
 	Game::world.onUpdate(dt);
 	cam.display(wnd);
 	
-	//lightController.update(cam);
+	lightController.update(cam);
 
 	if (actionMap.isActive("restart"))
 		return new StateGame;
@@ -106,7 +126,15 @@ Game::Actor * StateGame::addObstacle(const Vector2D & position, Angle rotation)
 
 
 	actor->addEfect(new Efect::UpdateTransform());
-	actor->addEfect(new Efect::GraphicsRect(Vector2D(150, 150), Color(100, 100, 100, 150)));
+	actor->addEfect(new Efect::GraphicsRect(Vector2D(150, 150), Color(100, 75, 75, 150)));
 
 	return actor;
+}
+
+Game::Actor * StateGame::addPrayer(const Vector2D & position, Angle rotation)
+{
+	auto player = Game::world.addActor(new ActorPrayer(), Game::Layers::character);
+	player->getRigidbody().SetTransform(position*toB2Position, rotation.asRadian());
+
+	return player;
 }

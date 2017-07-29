@@ -6,7 +6,7 @@
 >
 	
 	/// graphics
-	< type =atlas; path =Terrain\\grass.png;		atlasId =100>
+	< type =atlas; path =Terrain\\sign_circle2.png;		atlasId =100>
 
 	< type =atlas; path =shiveil\\arm2dk.png;		atlasId =200>
 	< type =atlas; path =shiveil\\armdk.png;		atlasId =201>

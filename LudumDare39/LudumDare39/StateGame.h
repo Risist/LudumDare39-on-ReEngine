@@ -28,4 +28,5 @@ protected: /// spawn functions
 	/// creates and adds simple obstacle - for testing
 	Game::Actor* addObstacle(const Vector2D& position, Angle rotation = Angle::zero);
 
+	Game::Actor* addPrayer(const Vector2D& position, Angle rotation = Angle::zero);
 };
