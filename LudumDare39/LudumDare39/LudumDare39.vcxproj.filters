@@ -18,6 +18,15 @@
     <ClCompile Include="StateCredits.cpp">
       <Filter>States</Filter>
     </ClCompile>
+    <ClCompile Include="ActorBonfire.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController.cpp">
+      <Filter>light</Filter>
+    </ClCompile>
+    <ClCompile Include="EfectLightSource.cpp">
+      <Filter>light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Layers.h" />
@@ -35,6 +44,15 @@
     </ClInclude>
     <ClInclude Include="StateCredits.h">
       <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorBonfire.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController.h">
+      <Filter>light</Filter>
+    </ClInclude>
+    <ClInclude Include="EfectLightSource.h">
+      <Filter>light</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +73,9 @@
     </Filter>
     <Filter Include="Resource\Gui">
       <UniqueIdentifier>{2222afa3-d290-461d-be93-5045c9cf1c93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="light">
+      <UniqueIdentifier>{8253bb5d-7a62-4f21-a986-74d1eb2734e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +114,9 @@
     </Text>
     <Text Include="gui_healthBar.txt">
       <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="model_bonfire.txt">
+      <Filter>Resource\models</Filter>
     </Text>
   </ItemGroup>
 </Project>
