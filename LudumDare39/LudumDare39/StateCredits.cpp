@@ -26,7 +26,7 @@ void StateCredits::onStart()
 		->setSize(20)->setStr("Maksymilian Zawartko"); pos.y += offsetY;
 
 	Gui::gui.add(new Gui::Text("gui_text.txt"))->setPos(pos)
-		->setSize(20)->setStr("--------------"); pos.y += offsetY;
+		->setSize(20)->setStr("Marcin  \"LiLatee\"  Hradowicz"); pos.y += offsetY;
 
 	auto back = Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(pos)
 		->setName("Back"); pos.y += offsetY;
