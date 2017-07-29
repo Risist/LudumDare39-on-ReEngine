@@ -15,8 +15,10 @@ void StateGame::onStart()
 	cam.setAlpha(1.f);
 
 	/// insert game objects
-	addBackground(Vector2D());
+
+  addBackground(Vector2D());
 	auto player = addPlayer(Vector2D(0, 200));
+  
 	lightController.observer = player;
 
 	//for (int i = 0; i < 50; ++i)
@@ -30,6 +32,20 @@ void StateGame::onStart()
 
 Game::State * StateGame::onUpdate(sf::Time dt)
 {
+	sf::Sprite s;
+	s.setTexture(atlasInst[207]);
+	s.setOrigin(s.getTextureRect().width / 2, s.getTextureRect().height / 2);
+
+	for (int i = -5; i < 5; i++) {
+		s.scale(-1, 1);
+	
+		for (int j = -5; j < 5; j++) {
+			s.setPosition(i * s.getTextureRect().width, j * s.getTextureRect().height);
+			s.scale(1, -1);
+			cam.draw(s);
+		}
+	}
+
 	Game::world.onUpdate(dt);
 	cam.display(wnd);
 	
@@ -83,7 +99,7 @@ Game::Actor * StateGame::addBackground(const Vector2D & position)
 	background->setPosition(position);
 
 	auto efModel = background->addEfect(new Efect::Model((ResId)2))
-		->setScale(Vector2D(5.f, 5.f));
+		->setScale(Vector2D(1.f, 1.f));
 	return background;
 }
 
