@@ -1,4 +1,4 @@
-< 
+	< 
 	prepathGraphics =..\\..\\Resources\\Graphics\\; 
 	prepathFont =..\\..\\Resources\\Fonts\\;
 	prepathSound =..\\..\\Resources\\Audio\\;
@@ -19,10 +19,16 @@
 	
 	< type =atlas;	path =Blood\\blood2.png;		atlasId =300>
 
+	
+	< type =atlas; path=bonfire\\bonfire_sticks.png;atlasId =400>
+	< type =atlas; path =bonfire\\fire.png;			atlasId =401>
+
+	
 	< type =font;	path =Akv.ttf;					id =1>
 
 	/// scripts
 	< type =script;	path =model_humanoid.txt;		id =1>
 	< type =script;	path =model_background.txt;		id =2>
 	< type =script;	path =model_blood.txt;			id =3>
+	< type =script;	path =model_bonfire.txt;		id =4>
 <\>

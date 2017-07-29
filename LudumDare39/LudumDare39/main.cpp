@@ -2,7 +2,7 @@
 #include "StateGame.h"
 #include "StateMenu.h"
 
-//#define TEST_FPS
+#define TEST_FPS
 
 void init()
 {
@@ -18,8 +18,8 @@ void init()
 	res.deserialise("Resources.txt");
 
 
-	//Game::stateManager.setState( new StateGame() );
-	Game::stateManager.setState(new StateMenu);
+	Game::stateManager.setState( new StateGame() );
+	//Game::stateManager.setState(new StateMenu);
 
 }
 

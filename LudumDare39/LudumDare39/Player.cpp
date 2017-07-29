@@ -39,6 +39,7 @@ void Player::onUpdate(sf::Time dt)
 
 bool Player::onDeath(sf::Time dt)
 {
+	Actor::onDeath(dt);
 	Gui::gui.remove(healthBar);
 	return true;
 }

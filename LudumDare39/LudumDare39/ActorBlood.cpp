@@ -19,6 +19,6 @@ void ActorBlood::onUpdate(sf::Time dt)
 	Game::Actor::onUpdate(dt);
 
 
-	efModel->model.color.a = efModel->model.color.a * 0.9999;
+	efModel->model.color.a = efModel->model.color.a * 0.9995;
 
 }
