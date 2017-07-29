@@ -74,7 +74,7 @@ Game::Actor * StateGame::addBackground(const Vector2D & position)
 	background->setPosition(position);
 
 	auto efModel = background->addEfect(new Efect::Model((ResId)2))
-		->setScale(Vector2D(5.f, 5.f));
+		->setScale(Vector2D(1.f, 1.f));
 	return background;
 }
 
