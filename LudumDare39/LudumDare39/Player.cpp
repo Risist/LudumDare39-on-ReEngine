@@ -17,7 +17,7 @@ void Player::onInit()
 	addEfect(new Efect::UpdateTransform());
 
 	/// health
-	efHealth = addEfect(new Efect::Health())->setRegeneration(-0.1, 1);
+	// efHealth = addEfect(new Efect::Health())->setRegeneration(-0.1, 1);
 	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(); }))
 		->setLayer(Game::Layers::blood);
 
@@ -34,7 +34,7 @@ void Player::onUpdate(sf::Time dt)
 {
 	Actor::onUpdate(dt);
 	
-	healthBar->setProgress(efHealth->actual / efHealth->max);
+	// healthBar->setProgress(efHealth->actual / efHealth->max);
 }
 
 bool Player::onDeath(sf::Time dt)
