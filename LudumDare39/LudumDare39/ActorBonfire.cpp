@@ -13,8 +13,9 @@ void ActorBonfire::onInit()
 	addEfect(new Efect::Model((ResId)4));
 	addEfect(new Efect::Rigidbody());
 	addEfect(new Efect::ColliderCircle(75.f));
+	addEfect(new Efect::DamageOnCollision(0.075));
 
-	efLight = addEfect(new EfectLightSource(50, 0.0005, 0.9));
+	efLight = addEfect(new EfectLightSource(50, 0.0005, 1));
 
 	addEfect(new Efect::Particle())->addEmitter(
 		Emitter().setEmissionRate(120).setLifetime([]() { return sf::seconds(randRange(0.5f, 1.f)); })

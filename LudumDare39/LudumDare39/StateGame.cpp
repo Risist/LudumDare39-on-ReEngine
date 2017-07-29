@@ -2,6 +2,7 @@
 #include "Layers.h"
 #include "ActorBonfire.h"
 #include "LightController.h"
+#include "ActorPrayer.h"
 
 void StateGame::onStart()
 {
@@ -15,13 +16,16 @@ void StateGame::onStart()
 
 	/// insert game objects
 	addBackground(Vector2D());
-	auto player = Game::world.addActor(new Player(), Game::Layers::character);
+	auto player = addPlayer(Vector2D(0, 200));
 	lightController.observer = player;
 
-	for (int i = 0; i < 50; ++i)
-		addObstacle(Vector2D(0, randRange(100.f, 5500.f)).getRotated(), randRange(Angle::zero, Angle::full) );
+	//for (int i = 0; i < 50; ++i)
+		//addObstacle(Vector2D(0, randRange(100.f, 5500.f)).getRotated(), randRange(Angle::zero, Angle::full) );
 
 	Game::world.addActor(new ActorBonfire, Game::Layers::obstacle);
+
+	for (int i = 0; i < 5; ++i)
+		addPrayer(Vector2D(0, randRange(100.f, 1000.f)).getRotated(), randRange(Angle::zero, Angle::full));
 }
 
 Game::State * StateGame::onUpdate(sf::Time dt)
@@ -95,4 +99,12 @@ Game::Actor * StateGame::addObstacle(const Vector2D & position, Angle rotation)
 	actor->addEfect(new Efect::GraphicsRect(Vector2D(150, 150), Color(100, 100, 100, 150)));
 
 	return actor;
+}
+
+Game::Actor * StateGame::addPrayer(const Vector2D & position, Angle rotation)
+{
+	auto player = Game::world.addActor(new ActorPrayer(), Game::Layers::character);
+	player->getRigidbody().SetTransform(position*toB2Position, rotation.asRadian());
+
+	return player;
 }

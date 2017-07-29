@@ -17,7 +17,7 @@ void Player::onInit()
 	addEfect(new Efect::UpdateTransform());
 
 	/// health
-	efHealth = addEfect(new Efect::Health())->setRegeneration(-0.1, 1);
+	efHealth = addEfect(new Efect::Health())->setRegeneration(0, 0.95);
 	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(); }))
 		->setLayer(Game::Layers::blood);
 
@@ -25,7 +25,7 @@ void Player::onInit()
 
 
 	/// 
-	addEfect(new Efect::MouseMovement(25, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.005)));
+	addEfect(new Efect::MouseMovement(40, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.005)));
 	addEfect(new Efect::FollowCamera(Efect::FollowCamera::positionOnlySmooth))->setLerpPosition(0.125);
 
 }
