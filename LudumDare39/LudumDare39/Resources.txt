@@ -15,7 +15,7 @@
 	< type =atlas; path =shiveil\\weaponDk.png;		atlasId =204>
 	< type =atlas; path =shiveil\\axe_stick.png;	atlasId =205>
 	< type =atlas; path =shiveil\\axe_blade.png;	atlasId =206>
-
+	< type =atlas; path =Ludum Dare\\floor.jpg;		atlasId =207>
 	
 	< type =atlas;	path =Blood\\blood2.png;		atlasId =300>
 
