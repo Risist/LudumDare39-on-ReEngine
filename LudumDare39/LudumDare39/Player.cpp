@@ -58,7 +58,7 @@ void Player::onInit()
 
 
 	/// 
-	efMovement = addEfect(new Efect::MouseMovement(40, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.005)));
+	efMovement = addEfect(new Efect::MouseMovement(50, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.006)));
 	//efMovement = addEfect(new Efect::StaticMovement(40, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.005)));
 	addEfect(new Efect::FollowCamera(Efect::FollowCamera::positionOnlySmooth))->setLerpPosition(0.125);
 

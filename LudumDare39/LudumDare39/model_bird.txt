@@ -1,0 +1,7 @@
+< rot = 0; ts = 0; scaleX = 0.8; scaleY = 0.8>
+	<ts =602; posY = 50; scaleY = 0.8; clR = 250; clG = 150; clB = 200><\>
+	<ts =601; clR = 250; clG = 150; clB = 200><\>
+	
+	<ts =603; posX = 50;  scaleY = -0.8; scaleX = -1; clR = 120; clG = 75; clB = 100><\>
+	<ts =603; posX = -50; scaleY = -0.8; clR = 120; clG = 75; clB = 100><\>
+<\>
