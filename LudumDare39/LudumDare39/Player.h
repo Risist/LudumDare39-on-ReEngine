@@ -31,4 +31,8 @@ public:
 
 	Gui::ProgressBar* healthBar;
 	Gui::ProgressBar* rageBar;
+
+private:
+	sf::Music walking_sound;
+	bool is_walking_activated = true;
 };

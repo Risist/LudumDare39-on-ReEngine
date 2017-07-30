@@ -18,6 +18,7 @@ public:
 	Angle direction;
 	float power;
 private:
+	sf::Sound fireball_sound;
 	Angle particleAngle;
 };
 

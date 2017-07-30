@@ -8,6 +8,14 @@ ActorFireball::ActorFireball(Angle _direction, float _power)
 void ActorFireball::onInit()
 {
 	Actor::onInit();
+	
+	fireball_sound.setBuffer(soundInst[1]);
+	fireball_sound.setVolume(100);
+	fireball_sound.setLoop(true);
+	
+	fireball_sound.setMinDistance(300.f);
+	fireball_sound.setAttenuation(1.f);
+	fireball_sound.play();
 
 	addEfect(new Efect::Rigidbody(10,10));
 	addEfect(new Efect::ColliderCircle(75.f));
@@ -42,6 +50,8 @@ void ActorFireball::onInit()
 void ActorFireball::onUpdate(sf::Time dt)
 {
 	Actor::onUpdate(dt); 
+
+	fireball_sound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
 
 	efLight->maxIntensitivityRatio += randRange(-0.006, 0.0075);
 	efLight->maxIntensitivityRatio = clamp(efLight->maxIntensitivityRatio, 0.85f, 1.f);

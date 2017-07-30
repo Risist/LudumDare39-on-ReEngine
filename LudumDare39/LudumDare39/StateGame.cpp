@@ -33,7 +33,7 @@ void StateGame::onStart()
 
 	ActorPrayer::n = 0;
 	auto player = addPlayer(Vector2D(0, 200), Degree(180));
-  
+ 
 	lightController.observer = player;
 
 
