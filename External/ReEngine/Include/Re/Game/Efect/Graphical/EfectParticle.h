@@ -89,7 +89,7 @@ namespace Efect
 		}
 		Particle* setTexture(ResId id)
 		{ 
-			//particleSystem.setTexture(tsInst[id]); 
+			particleSystem.setTexture(atlasInst[id]);
 			return this;
 		}
 		
@@ -106,7 +106,7 @@ namespace Efect
 			return this;
 		}
 
-	private:
+	//private:
 		thor::ParticleSystem particleSystem;
 	};
 

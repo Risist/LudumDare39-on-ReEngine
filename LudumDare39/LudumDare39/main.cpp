@@ -1,8 +1,10 @@
 #include <Re\ReEngine.h>
 #include "StateGame.h"
 #include "StateMenu.h"
+#include "StateBook.h"
+#include "StateDeath.h"
 
-//#define TEST_FPS
+#define TEST_FPS
 
 void init()
 {
@@ -18,6 +20,9 @@ void init()
 	res.deserialise("Resources.txt");
 
 
+
+	//Game::stateManager.setState(new StateBook());
+	//Game::stateManager.setState(new StateDeath());
 	//Game::stateManager.setState( new StateGame() );
 	Game::stateManager.setState(new StateMenu);
 

@@ -1,0 +1,110 @@
+#include "ActorBonfire.h"
+#include "ActorFireball.h"
+#include "Layers.h"
+#include "StateGame.h"
+
+ActorBonfire *ActorBonfire::bonfire = nullptr;
+
+ActorBonfire::ActorBonfire()
+{
+	actualIntensitivity = 0.975;
+}
+
+void ActorBonfire::onInit()
+{
+	Game::Actor::onInit();
+	bonfire = this;
+
+	addEfect(new Efect::Model((ResId)4));
+	addEfect(new Efect::Rigidbody());
+	addEfect(new Efect::ColliderCircle(75.f, 1.f, Vector2D(), true));
+	efDmg = addEfect(new Efect::DamageOnCollision(10));
+
+	efLight = addEfect(new EfectLightSource(0, 0.0003, actualIntensitivity));
+
+	efParticle = addEfect(new Efect::Particle())->addEmitter(
+		Emitter().setEmissionRate(120).setLifetime([]() { return sf::seconds(randRange(0.5f, 1.f)); })
+			.setPosition([this](){
+				particleAngle = randRange(Angle::zero, Angle::full);
+				return getPosition() + (Vector2f)Vector2D(randRange(10.f, 40.f*actualIntensitivity), 0).getRotated(particleAngle);
+			})
+			.setScale([this]() { 
+				float r = randRange(0.3f,0.7f)*actualIntensitivity;
+				return Vector2D(r, r);
+			})
+			.setVelocity([this]() {	return (Vector2f)Vector2D(randRange(10.f, 60.f*actualIntensitivity), 0).getRotated(particleAngle); })
+			.setRotation([](){		return randRange(0.f,360.f); })
+			.setRotationSpeed([](){ return randRange(-10.5f,10.5f); })
+			.setColor([this]() {
+				float d = randRange(0.5f, 1.2f);
+				return Color(200*d, 180*d*actualIntensitivity, 180*d*actualIntensitivity, randRange(30, 40));
+			})
+	)->setTexture(ResId(401));
+
+	if (StateGame::day > 1)
+	{
+		addEfect(new Efect::Throw)->addData([this]()
+		{
+			if (clockShoot.getElapsedTime() > sf::seconds(0.05 / pow(actualIntensitivity, 20)) && actualIntensitivity > 0.8)
+			{
+				actualIntensitivity *= 0.999;
+				clockShoot.restart();
+				return new ActorFireball(Vector2D(cam.mapPixelToCoords((Vector2D)Mouse::getPosition(wnd) - getPosition())).angle(), actualIntensitivity);
+			}
+			else return (ActorFireball*)nullptr;
+		})
+		->setDataLayer(Game::Layers::bullet);
+	}
+}
+
+void ActorBonfire::onUpdate(sf::Time dt)
+{
+	Actor::onUpdate(dt);
+
+	efLight->maxIntensitivityRatio += randRange(-0.007, 0.009);
+	efLight->maxIntensitivityRatio = clamp(efLight->maxIntensitivityRatio, 0.8f, actualIntensitivity);
+	actualIntensitivity *= 0.99985;
+
+
+	efDmg->damage = 10 * actualIntensitivity;
+	
+	efParticle->particleSystem.clearEmitters();
+	efParticle->addEmitter(
+	Emitter().setEmissionRate(120* powf(actualIntensitivity,8)).setLifetime([]() { return sf::seconds(randRange(0.5f, 1.f)); })
+		.setPosition([this](){
+			particleAngle = randRange(Angle::zero, Angle::full);
+			return getPosition() + (Vector2f)Vector2D(randRange(10.f, 40.f*actualIntensitivity), 0).getRotated(particleAngle);
+		})
+		.setScale([this]() { 
+			float r = randRange(0.3f,0.7f)*actualIntensitivity;
+			return Vector2D(r, r);
+		})
+		.setVelocity([this]() {	return (Vector2f)Vector2D(randRange(10.f, 60.f*actualIntensitivity), 0).getRotated(particleAngle); })
+		.setRotation([](){		return randRange(0.f,360.f); })
+		.setRotationSpeed([](){ return randRange(-10.5f,10.5f); })
+		.setColor([this]() {
+			float d = randRange(0.5f, 1.2f);
+			return Color(200*d, 180*d*actualIntensitivity, 180*d*actualIntensitivity, randRange(30, 40));
+		})
+	)->setTexture(ResId(401));
+}
+
+bool ActorBonfire::inflame(Game::Actor * creator, Efect::MovementAim* efMovement, Graphics::Model * burshwood)
+{
+	static const float actionDistance = 350.f;
+	
+	if ((creator->getPosition() - getPosition()).getLenghtSq() > actionDistance*actionDistance)
+		return false;
+
+	if (burshwood->color.a == 0)
+		return false;
+
+	burshwood->color.a = 0;
+
+	efMovement->reset();
+	efMovement->efRotDir->direction = Vector2D(getPosition() - creator->getPosition()).angle();
+
+	actualIntensitivity = clamp(actualIntensitivity +0.15f, 0.f, 1.f);
+
+	return true;
+}

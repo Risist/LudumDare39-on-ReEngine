@@ -145,33 +145,59 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActorBlood.cpp" />
+    <ClCompile Include="ActorBonfire.cpp" />
+    <ClCompile Include="ActorBrushwood.cpp" />
+    <ClCompile Include="ActorFireball.cpp" />
+    <ClCompile Include="ActorPrayer.cpp" />
+    <ClCompile Include="EfectLightSource.cpp" />
     <ClCompile Include="Layers.cpp" />
+    <ClCompile Include="LightController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="StateBook.cpp" />
     <ClCompile Include="StateCredits.cpp" />
+    <ClCompile Include="StateDeath.cpp" />
     <ClCompile Include="StateGame.cpp" />
     <ClCompile Include="StateMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActorBlood.h" />
+    <ClInclude Include="ActorBonfire.h" />
+    <ClInclude Include="ActorBrushwood.h" />
+    <ClInclude Include="ActorFireball.h" />
+    <ClInclude Include="ActorPrayer.h" />
+    <ClInclude Include="EfectLightSource.h" />
     <ClInclude Include="Layers.h" />
+    <ClInclude Include="LightController.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="StateBook.h" />
     <ClInclude Include="StateCredits.h" />
+    <ClInclude Include="StateDeath.h" />
     <ClInclude Include="StateGame.h" />
     <ClInclude Include="StateMenu.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="anim_cast.txt" />
+    <Text Include="anim_rule.txt" />
+    <Text Include="anim_walk.txt" />
     <Text Include="gui_background.txt" />
+    <Text Include="gui_bookText.txt" />
     <Text Include="gui_button.txt" />
     <Text Include="gui_buttonHalf.txt" />
     <Text Include="gui_checkBox.txt" />
     <Text Include="gui_colorBar.txt" />
     <Text Include="gui_healthBar.txt" />
+    <Text Include="gui_rageBar.txt" />
     <Text Include="gui_setBar.txt" />
     <Text Include="gui_text.txt" />
+    <Text Include="gui_tutorialBook.txt" />
     <Text Include="model_background.txt" />
     <Text Include="model_blood.txt" />
+    <Text Include="model_bonfire.txt" />
+    <Text Include="model_grass.txt" />
+    <Text Include="model_hrust.txt" />
     <Text Include="model_humanoid.txt" />
+    <Text Include="model_tree.txt" />
     <Text Include="Resources.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

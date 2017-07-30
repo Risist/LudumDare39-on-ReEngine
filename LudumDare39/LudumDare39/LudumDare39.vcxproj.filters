@@ -18,6 +18,30 @@
     <ClCompile Include="StateCredits.cpp">
       <Filter>States</Filter>
     </ClCompile>
+    <ClCompile Include="ActorBonfire.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController.cpp">
+      <Filter>light</Filter>
+    </ClCompile>
+    <ClCompile Include="EfectLightSource.cpp">
+      <Filter>light</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorPrayer.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorFireball.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorBrushwood.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="StateBook.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="StateDeath.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Layers.h" />
@@ -34,6 +58,30 @@
       <Filter>States</Filter>
     </ClInclude>
     <ClInclude Include="StateCredits.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorBonfire.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController.h">
+      <Filter>light</Filter>
+    </ClInclude>
+    <ClInclude Include="EfectLightSource.h">
+      <Filter>light</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorPrayer.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorFireball.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorBrushwood.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="StateBook.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateDeath.h">
       <Filter>States</Filter>
     </ClInclude>
   </ItemGroup>
@@ -55,6 +103,9 @@
     </Filter>
     <Filter Include="Resource\Gui">
       <UniqueIdentifier>{2222afa3-d290-461d-be93-5045c9cf1c93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="light">
+      <UniqueIdentifier>{8253bb5d-7a62-4f21-a986-74d1eb2734e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +143,36 @@
       <Filter>Resource\Gui</Filter>
     </Text>
     <Text Include="gui_healthBar.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="model_bonfire.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="anim_cast.txt">
+      <Filter>Resource\animations</Filter>
+    </Text>
+    <Text Include="anim_walk.txt">
+      <Filter>Resource\animations</Filter>
+    </Text>
+    <Text Include="anim_rule.txt">
+      <Filter>Resource\animations</Filter>
+    </Text>
+    <Text Include="gui_rageBar.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="model_tree.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="model_hrust.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="model_grass.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="gui_tutorialBook.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_bookText.txt">
       <Filter>Resource\Gui</Filter>
     </Text>
   </ItemGroup>
