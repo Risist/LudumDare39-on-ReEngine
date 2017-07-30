@@ -42,6 +42,9 @@
     <ClCompile Include="StateDeath.cpp">
       <Filter>States</Filter>
     </ClCompile>
+    <ClCompile Include="ActorBird.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Layers.h" />
@@ -83,6 +86,9 @@
     </ClInclude>
     <ClInclude Include="StateDeath.h">
       <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorBird.h">
+      <Filter>Actors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +180,12 @@
     </Text>
     <Text Include="gui_bookText.txt">
       <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="model_bird.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="anim_birdFly.txt">
+      <Filter>Resource\animations</Filter>
     </Text>
   </ItemGroup>
 </Project>

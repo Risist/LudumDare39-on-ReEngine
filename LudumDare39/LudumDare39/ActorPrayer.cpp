@@ -38,7 +38,7 @@ void ActorPrayer::onInit()
 
 
 
-	efMovement = addEfect(new Efect::MovementAim(40, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.005)));
+	efMovement = addEfect(new Efect::MovementAim(50, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.006)));
 	efRandomMovement = addEfect(new Efect::RandomMovement(efMovement), false)->setRadius(0,100.f)->setOffset(Vector2D(0,-100))->setTime(sf::seconds(0.2f), sf::seconds(0.75f));
 
 

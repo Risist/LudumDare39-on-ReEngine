@@ -5,6 +5,7 @@
 #include "ActorPrayer.h"
 #include "ActorBrushwood.h"
 #include "StateBook.h"
+#include "ActorBird.h"
 
 int StateGame::day;
 
@@ -106,12 +107,12 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 			return new StateBook(2);
 		}
 	}
-	/*if (ActorPrayer::n < 10 && clockSpawn.getElapsedTime() > sf::seconds(randRange(2*ActorPrayer::n*ActorPrayer::n,3*ActorPrayer::n*ActorPrayer::n) ))
+	if (ActorBird::n < 5 && clockSpawn.getElapsedTime() > sf::seconds(randRange(1*ActorBird::n,3 * ActorBird::n) ))
 	{
-		addPrayer(Vector2D(0, randRange(1400.f, 1700.f)).getRotated(), randRange(Angle::zero, Angle::full));
+		addBird(Vector2D(0, randRange(500.f, 1000.f)).getRotated(), randRange(Angle::zero, Angle::full));
 		clockSpawn.restart();
 		//cout << ActorPrayer::n << '\n';
-	}*/
+	}
 
 	Game::world.onUpdate(dt);
 	cam.display(wnd);
@@ -212,4 +213,12 @@ Game::Actor * StateGame::addGrass(const Vector2D & position, Angle rotation)
 
 	actor->addEfect(new Efect::Model(7))->model.color = Color_f(randRange(100, 140), randRange(100, 140), randRange(100, 140), randRange(180, 240));
 	return actor;
+}
+
+Game::Actor * StateGame::addBird(const Vector2D & position, Angle rotation)
+{
+	auto player = Game::world.addActor(new ActorBird(), Game::Layers::character);
+	player->getRigidbody().SetTransform(position*toB2Position, rotation.asRadian());
+
+	return player;
 }
