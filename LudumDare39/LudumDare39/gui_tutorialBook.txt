@@ -1,0 +1,6 @@
+<type =Button; halfWhX = 400; halfWhY = 325;  posX = 530; posY = 350;
+	onTs = 500; outTs = 500; pressTs = 500; 
+	onClA = 150;
+	outClA = 150;
+	pressClA = 150;
+>

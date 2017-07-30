@@ -7,6 +7,7 @@
 class StateGame : public Game::State
 {
 public:
+	StateGame(int _day) { day = _day;  }
 
 	/// overrided events
 	virtual void onStart() override;
@@ -29,4 +30,19 @@ protected: /// spawn functions
 	Game::Actor* addObstacle(const Vector2D& position, Angle rotation = Angle::zero);
 
 	Game::Actor* addPrayer(const Vector2D& position, Angle rotation = Angle::zero);
+
+	Game::Actor* addBurshwood(const Vector2D& position, Angle rotation = Angle::zero);
+
+	Game::Actor* addGrass(const Vector2D& position, Angle rotation = Angle::zero);
+
+
+public:
+	static int day;
+private:
+	sf::Clock clockSpawn; 
+	sf::Music introVoice;
+	sf::Music music;
+
+	sf::Clock nextState;
+	bool atVoice{ false };
 };

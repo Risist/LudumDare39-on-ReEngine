@@ -6,7 +6,7 @@
 class ActorFireball : public Game::Actor
 {
 public:
-	ActorFireball(Angle direction);
+	ActorFireball(Angle direction, float power);
 
 	virtual void onInit() override;
 	virtual void onUpdate(sf::Time dt) override;
@@ -16,6 +16,7 @@ public:
 	EfectLightSource *efLight;
 	Efect::Motor *efMotor;
 	Angle direction;
+	float power;
 private:
 	Angle particleAngle;
 };

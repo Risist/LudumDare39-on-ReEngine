@@ -30,8 +30,8 @@ public:
 	// most wide is from 0 to 1
 	float minimalLight, maximalLight;
 
+	float lastLightIntensitivitySq;
 private:
-
 	float bestLightIntensitivitySq;
 };
 extern LightController lightController;

@@ -2,10 +2,12 @@
 	< ts = 202; rot = 0; scaleX = 1; scaleY = 1; clR = 150; clG=100; clB=150; >
 		<ts = 200; rot = 40; posX = -50; posY = 5; clR = 150; clG = 125; clB = 125 > left arm
 			<ts = 201; rot = 120; ud = 1; posX = -45>
+				<ts = 102; scaleX = 1.; posY = -30; scaleY = 1.; clR = 180; clG = 140; clB = 140; rotSprite = -10; clA = 0; ><\>
 			<\>
 		<\>
 		<ts = 200; rot = -40; posX = 50; posY = 5; clR = 150; clG = 125; clB = 125 >
 			<ts = 201; rot = -120; ud = 1; posX = 45>
+				<ts = 102; scaleX = 1.25; posY = -30; scaleY = 2.; clR = 180; clG = 140; clB = 140; rotSprite = -10; clA = 0; ><\>
 			<\>
 		<\>
 	<\>

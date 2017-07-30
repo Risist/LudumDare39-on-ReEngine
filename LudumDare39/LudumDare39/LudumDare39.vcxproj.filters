@@ -30,7 +30,18 @@
     <ClCompile Include="ActorPrayer.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
-    <ClCompile Include="ActorFireball.cpp" />
+    <ClCompile Include="ActorFireball.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorBrushwood.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="StateBook.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="StateDeath.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Layers.h" />
@@ -61,7 +72,18 @@
     <ClInclude Include="ActorPrayer.h">
       <Filter>Actors</Filter>
     </ClInclude>
-    <ClInclude Include="ActorFireball.h" />
+    <ClInclude Include="ActorFireball.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorBrushwood.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="StateBook.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateDeath.h">
+      <Filter>States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource">
@@ -125,6 +147,33 @@
     </Text>
     <Text Include="model_bonfire.txt">
       <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="anim_cast.txt">
+      <Filter>Resource\animations</Filter>
+    </Text>
+    <Text Include="anim_walk.txt">
+      <Filter>Resource\animations</Filter>
+    </Text>
+    <Text Include="anim_rule.txt">
+      <Filter>Resource\animations</Filter>
+    </Text>
+    <Text Include="gui_rageBar.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="model_tree.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="model_hrust.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="model_grass.txt">
+      <Filter>Resource\models</Filter>
+    </Text>
+    <Text Include="gui_tutorialBook.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_bookText.txt">
+      <Filter>Resource\Gui</Filter>
     </Text>
   </ItemGroup>
 </Project>

@@ -6,7 +6,10 @@
 >
 	
 	/// graphics
-	< type =atlas; path =Terrain\\sign_circle2.png;		atlasId =100>
+	< type =atlas; path =Terrain\\sign_circle2.png;	atlasId =100>
+	< type =atlas; path =Terrain\\drzewo_004.png;	atlasId =101>
+	< type =atlas; path =Terrain\\hrust.png;		atlasId =102>
+	< type =atlas; path =Terrain\\drzewo_006.png;	atlasId =103>
 
 	< type =atlas; path =shiveil\\arm2dk.png;		atlasId =200>
 	< type =atlas; path =shiveil\\armdk.png;		atlasId =201>
@@ -15,13 +18,16 @@
 	< type =atlas; path =shiveil\\weaponDk.png;		atlasId =204>
 	< type =atlas; path =shiveil\\axe_stick.png;	atlasId =205>
 	< type =atlas; path =shiveil\\axe_blade.png;	atlasId =206>
-	< type =atlas; path =Ludum Dare\\floor.jpg;		atlasId =207>
+	< type =atlas; path =Terrain\\granite.png;		atlasId =207>
 	
 	< type =atlas;	path =Blood\\blood2.png;		atlasId =300>
 
 	
 	< type =atlas; path=bonfire\\bonfire_sticks.png;atlasId =400>
 	< type =atlas; path =bonfire\\fire.png;			atlasId =401>
+
+	
+	< type =atlas; path =book\\paper.jpg;			atlasId =500>
 
 	
 	< type =font;	path =Akv.ttf;					id =1>
@@ -31,4 +37,7 @@
 	< type =script;	path =model_background.txt;		id =2>
 	< type =script;	path =model_blood.txt;			id =3>
 	< type =script;	path =model_bonfire.txt;		id =4>
+	< type =script;	path =model_tree.txt;			id =5>
+	< type =script;	path =model_hrust.txt;			id =6>
+	< type =script;	path =model_grass.txt;			id =7>
 <\>
