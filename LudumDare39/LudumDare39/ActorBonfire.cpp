@@ -14,6 +14,16 @@ void ActorBonfire::onInit()
 {
 	Game::Actor::onInit();
 	bonfire = this;
+	
+	bonfire_sound.openFromFile("..\\..\\Resources\\Audio\\bonfire_sound.wav");
+	bonfire_sound.setPitch(0.95);
+	bonfire_sound.setVolume(100);
+	bonfire_sound.setLoop(true);
+	bonfire_sound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
+	bonfire_sound.setMinDistance(300.f);
+	bonfire_sound.setAttenuation(1.f);
+	bonfire_sound.play();
+	
 
 	addEfect(new Efect::Model((ResId)4));
 	addEfect(new Efect::Rigidbody());

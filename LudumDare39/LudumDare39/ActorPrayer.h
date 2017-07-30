@@ -37,5 +37,7 @@ public:
 	bool agressive{false};
 private:
 	bool readyToBurn{false};
+	bool is_walking_activated = true;
+	sf::Music walking_sound;
 };
 
