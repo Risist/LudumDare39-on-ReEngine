@@ -14,7 +14,19 @@ void Player::onInit()
 {
 	player = this;
 	Game::Actor::onInit();
+
+	/// walking sound
+	walking_sound.openFromFile("..\\..\\Resources\\Audio\\walking.wav");
+	walking_sound.setPitch(0.95);
+	walking_sound.setVolume(100);
+	walking_sound.setLoop(true);
+	walking_sound.setMinDistance(0.f);     
 	
+
+	//for 3D sound
+	sf::Listener::setDirection(sf::Vector3f(0.f, 0.f, -1.f));
+
+
 	/// graphics
 	efModel = addEfect(new Efect::Model((ResId)1 ));
 	if (StateGame::day > 1)
@@ -56,12 +68,30 @@ void Player::onUpdate(sf::Time dt)
 {
 	Actor::onUpdate(dt);
 
+	//for 3D sound
+	sf::Listener::setPosition(sf::Vector3f(Player::player->getPosition().x, 0, Player::player->getPosition().y));
+	walking_sound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
+
 	efHealth->damage((0.915- lightController.lastLightIntensitivitySq)* 0.2,this);
 	
 	healthBar->setProgress(efHealth->actual / efHealth->max);
-	if (efMovement->getArrived() == false)
-		animWalk->updateReturn();
 	
+	if (efMovement->getArrived() == false)
+	{
+		if(is_walking_activated)
+		{
+			walking_sound.play();
+			is_walking_activated = false;
+		}
+		animWalk->updateReturn();
+	}
+	else
+	{
+		is_walking_activated = true;
+		walking_sound.pause();
+	}
+
+
 	static const float actionDistance = 125;
 	if (actionMap.isActive("fire3") )
 	{

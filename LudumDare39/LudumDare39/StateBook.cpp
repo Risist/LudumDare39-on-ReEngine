@@ -12,7 +12,7 @@ void StateBook::onStart()
 {
 	tale.openFromFile("..\\..\\Resources\\Audio\\introTale.wav");
 	tale.setPitch(0.95);
-	tale.setVolume(100);
+	tale.setVolume(50);
 	tale.play();
 
 	Gui::gui.add(new Gui::Button("gui_tutorialBook.txt"));

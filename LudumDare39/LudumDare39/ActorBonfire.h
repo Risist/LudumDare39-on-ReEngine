@@ -21,6 +21,7 @@ public:
 
 	float actualIntensitivity;
 private:
+	sf::Music bonfire_sound;
 	Angle particleAngle;
 	Clock clockChangeRate;
 	Clock clockShoot;

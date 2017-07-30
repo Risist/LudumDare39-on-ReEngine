@@ -12,6 +12,16 @@ ActorPrayer::ActorPrayer()
 void ActorPrayer::onInit()
 {
 	n++;
+	/// walking sound
+	walking_sound.openFromFile("..\\..\\Resources\\Audio\\walking.wav");
+	walking_sound.setPitch(0.95);
+	walking_sound.setVolume(100);
+	walking_sound.setLoop(true);
+	walking_sound.setMinDistance(200.f);
+	walking_sound.setAttenuation(1.f);
+
+
+	
 	/// graphics
 	efModel = addEfect(new Efect::Model((ResId)1));
 	if (StateGame::day > 2 && randRange(0, 1) > 0.8 )
@@ -49,8 +59,21 @@ void ActorPrayer::onUpdate(sf::Time dt)
 {
 	Actor::onUpdate(dt);
 
+	walking_sound.setPosition(sf::Vector3f(getPosition().x, 0.f, getPosition().y));
 	if (efMovement->getArrived() == false)
+	{
+		if (is_walking_activated)
+		{
+			walking_sound.play();
+			is_walking_activated = false;
+		}
 		animWalk->updateReturn();
+	}
+	else
+	{
+		is_walking_activated = true;
+		walking_sound.pause();
+	}
 
 	switch (mode)
 	{
