@@ -1,6 +1,7 @@
 #include "StateMenu.h"
 #include "StateGame.h"
 #include "StateCredits.h"
+#include "StateBook.h"
 
 StateMenu::StateMenu()
 {
@@ -25,7 +26,7 @@ void StateMenu::onStart()
 		->setName("Exit"); pos.y += offsetY;
 
 
-	startGame->setEvent([]() { Game::stateManager.setState(new StateGame); });
+	startGame->setEvent([]() { Game::stateManager.setState(new StateBook); });
 	credits->setEvent([]() { Game::stateManager.setState(new StateCredits); });
 	exit->setEvent([]() { wnd.close(); });
 

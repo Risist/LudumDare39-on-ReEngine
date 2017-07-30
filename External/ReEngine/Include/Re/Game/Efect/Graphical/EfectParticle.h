@@ -106,7 +106,7 @@ namespace Efect
 			return this;
 		}
 
-	private:
+	//private:
 		thor::ParticleSystem particleSystem;
 	};
 

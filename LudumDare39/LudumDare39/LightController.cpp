@@ -9,16 +9,17 @@ LightController::LightController(Game::Actor *_observer, float _minimalLight, fl
 
 void LightController::update(Camera& cam)
 {
+	lastLightIntensitivitySq = bestLightIntensitivitySq;
 	// set new darkness level
 	cam.setDarkness(
 		clamp(
-			pow(bestLightIntensitivitySq, 8.f)
+			pow(bestLightIntensitivitySq, 4.f)
 
 			, minimalLight, maximalLight)
 	);
 
 	// reset Light intensitivity
-	bestLightIntensitivitySq = minimalLight * minimalLight;
+	bestLightIntensitivitySq = minimalLight * minimalLight + bestLightIntensitivitySq *0.1f;
 }
 
 
