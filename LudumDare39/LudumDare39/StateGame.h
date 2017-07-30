@@ -35,6 +35,8 @@ protected: /// spawn functions
 
 	Game::Actor* addGrass(const Vector2D& position, Angle rotation = Angle::zero);
 
+	Game::Actor* addBird(const Vector2D& position, Angle rotation = Angle::zero);
+
 
 public:
 	static int day;

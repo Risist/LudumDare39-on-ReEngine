@@ -23,6 +23,11 @@
 	< type =atlas;	path =Blood\\blood2.png;		atlasId =300>
 
 	
+	< type =atlas; path =Zero\\demon_head.png;		atlasId =601>	
+	< type =atlas; path =Zero\\demon_tail.png;		atlasId =602>	
+	< type =atlas; path =Zero\\demon_arm.png;		atlasId =603>	
+	
+
 	< type =atlas; path=bonfire\\bonfire_sticks.png;atlasId =400>
 	< type =atlas; path =bonfire\\fire.png;			atlasId =401>
 
@@ -40,4 +45,5 @@
 	< type =script;	path =model_tree.txt;			id =5>
 	< type =script;	path =model_hrust.txt;			id =6>
 	< type =script;	path =model_grass.txt;			id =7>
+	< type =script;	path =model_bird.txt;			id =8>
 <\>

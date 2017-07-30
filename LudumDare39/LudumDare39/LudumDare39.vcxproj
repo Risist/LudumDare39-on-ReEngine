@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActorBird.cpp" />
     <ClCompile Include="ActorBlood.cpp" />
     <ClCompile Include="ActorBonfire.cpp" />
     <ClCompile Include="ActorBrushwood.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="StateMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActorBird.h" />
     <ClInclude Include="ActorBlood.h" />
     <ClInclude Include="ActorBonfire.h" />
     <ClInclude Include="ActorBrushwood.h" />
@@ -177,6 +179,7 @@
     <ClInclude Include="StateMenu.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="anim_birdFly.txt" />
     <Text Include="anim_cast.txt" />
     <Text Include="anim_rule.txt" />
     <Text Include="anim_walk.txt" />
@@ -192,6 +195,7 @@
     <Text Include="gui_text.txt" />
     <Text Include="gui_tutorialBook.txt" />
     <Text Include="model_background.txt" />
+    <Text Include="model_bird.txt" />
     <Text Include="model_blood.txt" />
     <Text Include="model_bonfire.txt" />
     <Text Include="model_grass.txt" />
