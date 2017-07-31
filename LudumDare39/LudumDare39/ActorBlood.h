@@ -5,7 +5,7 @@
 class ActorBlood : public Game::Actor
 {
 public:
-	ActorBlood();
+	ActorBlood(ResId indexSound);
 
 	/// virtual override
 	virtual void onInit() override; 
@@ -13,5 +13,9 @@ public:
 
 	/// efect ptrs
 	Efect::Model *efModel;
+
+private:
+	ResId indexSound;
+	sf::Sound deathSound;
 };
 

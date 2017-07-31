@@ -14,6 +14,14 @@ void ActorBird::onInit()
 	++n;
 	Actor::onInit();
 
+	birdSound.openFromFile("..\\..\\Resources\\Audio\\bird_wings.wav");
+	birdSound.setPitch(randRange(0.9, 1.1));
+	birdSound.setLoop(true);
+	birdSound.setVolume(100);
+	birdSound.setMinDistance(0.f);
+	birdSound.setAttenuation(0.3f);
+	birdSound.play();
+
 	efModel = addEfect(new Efect::Model(8));
 	auto efAnim = addEfect(new Efect::AnimationManager(efModel->modelsUpdate));
 
@@ -26,7 +34,7 @@ void ActorBird::onInit()
 
 
 	efHealth = addEfect(new Efect::Health(50))->setRegeneration(0, 0.6);
-	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(); }))
+	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(2); }))
 		->setLayer(Game::Layers::blood);
 	addEfect(new Efect::DamageOnCollision(2))->allowdedToDeal = [](Game::Actor& other, b2Contact&) { return !dynamic_cast<ActorBird*>(&other); };
 
@@ -41,10 +49,19 @@ void ActorBird::onUpdate(sf::Time dt)
 {
 	Actor::onUpdate(dt);
 
+	birdSound.setPosition(Vector3f(getPosition().x, 0, getPosition().y));
+
 	if (efMovement->getInfluence().getLenghtSq() < efMovement->minimalDistance * efMovement->minimalDistance)
-		animFly->updateInRange(1.5);
-	else 
-		animFly->updateInRange(-1);
+	{
+		//if (birdSound.getStatus() != Sound::Playing) birdSound.play();
+		animFly->updateInRange(2);
+	}
+	else
+	{
+		//birdSound.pause();
+		animFly->updateInRange(-0.75);
+
+	}
 
 	switch (mode)
 	{
@@ -69,6 +86,7 @@ bool ActorBird::onDeath(sf::Time dt)
 {
 	Actor::onDeath(dt);
 	--n;
+	birdSound.stop();
 	return true;
 }
 

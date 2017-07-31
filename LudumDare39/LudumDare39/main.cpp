@@ -24,8 +24,8 @@ void init()
 
 	//Game::stateManager.setState(new StateBook());
 	//Game::stateManager.setState(new StateDeath());
-	Game::stateManager.setState(new StateCredits);
-	///Game::stateManager.setState( new StateGame(2) );
+	//Game::stateManager.setState(new StateCredits);
+	Game::stateManager.setState( new StateGame(2) );
 	//Game::stateManager.setState(new StateMenu);
 
 }
