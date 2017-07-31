@@ -7,6 +7,7 @@
 #include "StateDeath.h"
 
 #include "LightController.h"
+#include "ActorBrushwood.h"
 
 Player *Player::player = nullptr;
 
@@ -110,14 +111,34 @@ void Player::onUpdate(sf::Time dt)
 		
 		animRule->updateInRange();
 
-		if (((Vector2D)cam.mapPixelToCoords(Mouse::getPosition(wnd)) - ActorBonfire::bonfire->getPosition())
-			.getLenghtSq() < actionDistance*actionDistance)
-			if( getPosition().getLenghtSq() < 300 * 300)
-			ActorBonfire::bonfire->inflame(this, efMovement, efModel->modelsUpdate[4]);
-
+		Vector2D facing = Vector2D(0, 1).getRotated(getRotation());
+		Vector2D toPlayer = (getPosition() - ActorBonfire::bonfire->getPosition() ).getNormalised();
+		float dot = facing.dot(toPlayer);
+		if (getPosition().getLenghtSq() < 300 * 300)
+		{
+			if (dot > 0.6)
+			{
+				ActorBonfire::bonfire->inflame(this, efMovement, efModel->modelsUpdate[4]);
+				//readyToUse = false;
+			}
+		}
+		else
+		{
+			cout << readyToUse << endl;
+			if (readyToUse)
+			{
+				auto burshood = (ActorBrushwood*)StateGame::stateGame->addBurshwood(getPosition() - facing * 150);
+				burshood->efModel->setColor(efModel->modelsUpdate[4]->color);
+				efModel->modelsUpdate[4]->color.a = 0;
+				readyToUse = false;
+			}
+		}
 	}
 	else
+	{
 		animRule->updateInRange(-1);
+		readyToUse = true;
+	}
 
 	{
 		if (actionMap.isActive("fire2"))

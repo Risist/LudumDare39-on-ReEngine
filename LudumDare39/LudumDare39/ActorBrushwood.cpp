@@ -22,9 +22,17 @@ void ActorBrushwood::onUpdate(sf::Time dt)
 	static const float actionDistance = 125;
 	if (actionMap.isActive("fire3"))
 	{
-		if (((Vector2D)cam.mapPixelToCoords(Mouse::getPosition(wnd)) -getPosition())
-			.getLenghtSq() < actionDistance*actionDistance)
-			collect(Player::player, Player::player->efMovement, Player::player->efModel->modelsUpdate[4]);
+		Vector2D facing = Vector2D(0, 1).getRotated(Player::player->getRotation());
+		Vector2D toPlayer = (Player::player->getPosition() - getPosition()).getNormalised();
+		float dot = facing.dot(toPlayer);
+		if (dot > 0.6 && Player::player->readyToUse && collect(Player::player, Player::player->efMovement, Player::player->efModel->modelsUpdate[4]))
+			Player::player->readyToUse = false;
+
+
+
+		//if (((Vector2D)cam.mapPixelToCoords(Mouse::getPosition(wnd)) -getPosition())
+			//.getLenghtSq() < actionDistance*actionDistance)
+			//collect(Player::player, Player::player->efMovement, Player::player->efModel->modelsUpdate[4]);
 	}
 }
 

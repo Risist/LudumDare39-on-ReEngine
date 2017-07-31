@@ -31,7 +31,9 @@ public:
 
 	Gui::ProgressBar *healthBarLeft, *healthBarRight;
 
+	bool readyToUse = false;
 private:
+	
 	sf::Music walking_sound;
 	bool is_walking_activated = true;
 	sf::Sound dmgSound;

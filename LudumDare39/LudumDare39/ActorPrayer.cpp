@@ -49,7 +49,7 @@ void ActorPrayer::onInit()
 	addEfect(new Efect::UpdateTransform());
 
 
-	efHealth = addEfect(new Efect::Health(agressive ? 400 : 50))->setRegeneration(0, 0.6)
+	efHealth = addEfect(new Efect::Health(agressive ? 200 : 50))->setRegeneration(0, 0.6)
 		->setDamageReaction([&](float32, Game::Actor* owner) {if (owner != this && dmgSound.getStatus() != Sound::Playing) dmgSound.play(); });
 	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(); }))
 		->setLayer(Game::Layers::blood);
