@@ -17,7 +17,11 @@ void Player::onInit()
 	Game::Actor::onInit();
 
 	/// walking sound
+#ifndef RELEASE_PATHS
 	walking_sound.openFromFile("..\\..\\Resources\\Audio\\walking.wav");
+#else
+	walking_sound.openFromFile("Resources\\Audio\\walking.wav");
+#endif
 	walking_sound.setPitch(randRange(0.9, 1.1));
 	walking_sound.setVolume(100);
 	walking_sound.setLoop(true);
