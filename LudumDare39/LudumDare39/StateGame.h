@@ -43,6 +43,7 @@ public:
 	static int day;
 private:
 	sf::Clock clockSpawn; 
+	sf::Clock clockSpawnMage;
 	sf::Music introVoice;
 	sf::Music music;
 

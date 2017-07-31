@@ -160,6 +160,7 @@
     <ClCompile Include="StateDeath.cpp" />
     <ClCompile Include="StateGame.cpp" />
     <ClCompile Include="StateMenu.cpp" />
+    <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActorBird.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="StateDeath.h" />
     <ClInclude Include="StateGame.h" />
     <ClInclude Include="StateMenu.h" />
+    <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="anim_birdFly.txt" />
