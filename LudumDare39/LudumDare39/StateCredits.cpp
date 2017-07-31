@@ -18,15 +18,25 @@ void StateCredits::onStart()
 	Gui::gui.add(new Gui::Text("gui_text.txt"))->setPos(pos + Vector2D(-20, 0))
 		->setSize(25)->setStr("  Credits"); pos.y += 100;
 
+	Gui::gui.add(new Gui::NamedButton("gui_box.txt"))->setPos(pos)
+		->setName("Major")->setTextOffset(Vector2D(0,-25)); pos.y += offsetY*0.75;
 
 	Gui::gui.add(new Gui::Text("gui_text.txt"))->setPos(pos)
-		->setSize(20)->setStr("Maciej  \"Risist\"  Dominiak"); pos.y += offsetY;
+		->setSize(20)->setStr("Maciej  \"Risist\"  Dominiak"); pos.y += offsetY * 1.25;
+
+	Gui::gui.add(new Gui::Text("gui_text.txt"))->setPos(pos)
+		->setSize(20)->setStr("Marcin  \"LiLatee\"  Hradowicz"); pos.y += offsetY;
+
+
+	Gui::gui.add(new Gui::NamedButton("gui_box.txt"))->setPos(pos)
+		->setName("Minor")->setTextOffset(Vector2D(0, -25)); pos.y += offsetY *0.75;
 
 	Gui::gui.add(new Gui::Text("gui_text.txt"))->setPos(pos)
 		->setSize(20)->setStr("Maksymilian Zawartko"); pos.y += offsetY;
 
 	Gui::gui.add(new Gui::Text("gui_text.txt"))->setPos(pos)
-		->setSize(20)->setStr("Marcin  \"LiLatee\"  Hradowicz"); pos.y += offsetY;
+		->setSize(20)->setStr("Bartosz Bak"); pos.y += offsetY*1.25;
+
 
 	auto back = Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(pos)
 		->setName("Back"); pos.y += offsetY;

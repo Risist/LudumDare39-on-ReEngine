@@ -1,0 +1,4 @@
+<type =ProgressBar; halfWhX = 250; halfWhY = 9; direction =right; posX = 300; posY = 40;
+backClR = 0; backClG = 0; backClB = 0; backClA = 100;
+foreClR = 70; foreClG = 40; foreClB = 200; foreClA = 80;
+>

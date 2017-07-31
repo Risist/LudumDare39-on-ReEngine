@@ -13,13 +13,12 @@ void StateGame::onStart()
 {
 	music.openFromFile("..\\..\\Resources\\Audio\\inn_wolf.wav");
 	music.setPitch(0.95);
-	music.setVolume(45);
+	music.setVolume(30);
 	music.setLoop(true);
 	music.play();
 
 	introVoice.openFromFile("..\\..\\Resources\\Audio\\whenNight.wav");
 	introVoice.setPitch(0.95);
-	//introVoice.play();
 
 	/// game settings
 	initKeys();
@@ -66,10 +65,52 @@ void StateGame::onStart()
 
 
 	for(int i = 0; i < 3; ++i)
-		addPrayer(Vector2D(0, randRange(1000.f, 1500.f)).getRotated(), randRange(Angle::zero, Angle::full));
+		addPrayer(Vector2D(0, randRange(250.f, 500.f)).getRotated(), randRange(Angle::zero, Angle::full));
 
 
 	Game::world.addActor(new ActorBonfire, Game::Layers::obstacle);
+
+	leftTimeBarLeft = Gui::gui.add(new Gui::ProgressBar("gui_leftTimeBarLeft.txt"));
+	leftTimeBarRight = Gui::gui.add(new Gui::ProgressBar("gui_leftTimeBarRight.txt"));
+	tTip = Gui::gui.add(new Gui::Text("gui_text.txt"))->setPos(Vector2D(550, 60));
+
+	if (day > 0)
+	{
+		tips.push_back("Collect woods");
+		tips.push_back("Throw Woods to bonfire");
+		tips.push_back("Collect woods to lit bonfire");
+		tips.push_back("Press E key to interact");
+		tips.push_back("Press E key to interact");
+		tips.push_back("Press E key to interact");
+		tips.push_back("Click on the map to move");
+		tips.push_back("Avoid darkness");
+		tips.push_back("Wait to end of the night");
+		tips.push_back("Keep fire lit");
+		tips.push_back("Stay in light to heal");
+		if (day > 1)
+		{
+			tips.push_back("Press Q key to shoot a fireball");
+			tips.push_back("Press Q key to shoot a fireball");
+			tips.push_back("Press Q key to shoot a fireball");
+			tips.push_back("The fire is your only hope!");
+			tips.push_back("Defend your allies");
+			tips.push_back("Avoid ravens");
+			tips.push_back("Kill ravens");
+			tips.push_back("Flame your enemys");
+			tips.push_back("Don\'t waste the fire!");
+			if (day > 3)
+			{
+				tips.push_back("Who\'s mad???");
+				tips.push_back("Are you mad???");
+				tips.push_back("Allies can become mad");
+				tips.push_back("Just kill me, please!");
+				tips.push_back("The night will never end");
+			}
+		}
+	}
+	tTip->clear() << tips[sqrt(randRange(0, 1))*tips.size()];
+
+	lightController.lastLightIntensitivitySq = 1;
 }
 
 Game::State * StateGame::onUpdate(sf::Time dt)
@@ -95,10 +136,12 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 	
 
 	
-	if (day == 1 )
+	/*if (day == 1 )
 	{
-		
-		if (atVoice == false && nextState.getElapsedTime() > sf::seconds(15*4))
+		leftTimeBarLeft->setProgress(nextState.getElapsedTime().asSeconds() / 95.f);
+		leftTimeBarRight->setProgress(nextState.getElapsedTime().asSeconds() / 95.f);
+
+		if (atVoice == false && nextState.getElapsedTime() > sf::seconds(90))
 		{
 			introVoice.play();
 			atVoice = true;
@@ -107,17 +150,46 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 			return new StateBook(2);
 		}
 	}
-	if (ActorBird::n < 5 && clockSpawn.getElapsedTime() > sf::seconds(randRange(1*ActorBird::n,3 * ActorBird::n) ))
+	else 
 	{
-		addBird(Vector2D(0, randRange(500.f, 1000.f)).getRotated(), randRange(Angle::zero, Angle::full));
-		clockSpawn.restart();
-		//cout << ActorPrayer::n << '\n';
+		float stateMaxTime = 45 * (2 + day);
+		float stateCompletePercent = nextState.getElapsedTime().asSeconds() / stateMaxTime;
+		leftTimeBarLeft->setProgress( stateCompletePercent);
+		leftTimeBarRight->setProgress(stateCompletePercent);
+
+
+		if (nextState.getElapsedTime() > sf::seconds(20) && ActorBird::n < 3 &&
+			clockSpawn.getElapsedTime() > sf::seconds(randRange((10+ActorBird::n)*stateCompletePercent, 10+ +1.*ActorBird::n )))
+		{
+			addBird(Vector2D(0, randRange(1200.f, 1700.f)).getRotated(), randRange(Angle::zero, Angle::full));
+			clockSpawn.restart();
+		}
+		else if (day > 2)
+		{
+			if (nextState.getElapsedTime() > sf::seconds(20) && ActorPrayer::n < 4 &&
+				clockSpawn.getElapsedTime() > sf::seconds(randRange((10 - 0.5*day + ActorPrayer::n)* stateCompletePercent, 15 + 1.5*ActorPrayer::n)))
+			{
+				addPrayer(Vector2D(0, randRange(1200.f, 1700.f)).getRotated(), randRange(Angle::zero, Angle::full), true);
+				clockSpawn.restart();
+			}
+		}
+
+		if (nextState.getElapsedTime() > sf::seconds(stateMaxTime))
+		{
+			return new StateBook(day + 1);
+		}
+	}*/
+
+	if (nextTip.getElapsedTime() > sf::seconds(randRange(7,8)) )
+	{
+		tTip->clear() << tips[sqrt(randRange(0, 1))*tips.size()];
+		nextTip.restart();
 	}
 
 	Game::world.onUpdate(dt);
 	cam.display(wnd);
 	
-	lightController.update(cam);
+	//lightController.update(cam);
 
 	if (actionMap.isActive("restart"))
 		return new StateGame(day);
@@ -184,9 +256,9 @@ Game::Actor * StateGame::addObstacle(const Vector2D & position, Angle rotation)
 	return actor;
 }
 
-Game::Actor * StateGame::addPrayer(const Vector2D & position, Angle rotation)
+Game::Actor * StateGame::addPrayer(const Vector2D & position, Angle rotation, bool agressive)
 {
-	auto player = Game::world.addActor(new ActorPrayer(), Game::Layers::character);
+	auto player = Game::world.addActor(new ActorPrayer(agressive), Game::Layers::character);
 	player->getRigidbody().SetTransform(position*toB2Position, rotation.asRadian());
 
 	return player;

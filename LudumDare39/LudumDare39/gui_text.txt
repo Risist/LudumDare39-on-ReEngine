@@ -1,4 +1,4 @@
 <type =Text; 
 		clR = 255; clG = 255; clB = 255;
-		size =20; font =1;
+		size =25; font =1;
 	>

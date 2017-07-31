@@ -17,10 +17,15 @@ void Player::onInit()
 
 	/// walking sound
 	walking_sound.openFromFile("..\\..\\Resources\\Audio\\walking.wav");
-	walking_sound.setPitch(0.95);
+	walking_sound.setPitch(randRange(0.9, 1.1));
 	walking_sound.setVolume(100);
 	walking_sound.setLoop(true);
-	walking_sound.setMinDistance(0.f);     
+	walking_sound.setMinDistance(0.f);    
+
+	dmgSound.setBuffer(soundInst[2]);
+	dmgSound.setVolume(60);
+	dmgSound.setMinDistance(200.f);
+	dmgSound.setAttenuation(0.25f);
 	
 
 	//for 3D sound
@@ -48,17 +53,17 @@ void Player::onInit()
 	
 
 	/// health
-	efHealth = addEfect(new Efect::Health())->setRegeneration(0, 0.6);
+	efHealth = addEfect(new Efect::Health(70*StateGame::day))->setRegeneration(0, 0.6)
+		->setDamageReaction([&](float32, Game::Actor* owner) {if (owner != this && dmgSound.getStatus() != Sound::Playing) dmgSound.play(); });
 
 	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(); }))
 		->setLayer(Game::Layers::blood);
 
-	healthBar = Gui::gui.add(new Gui::ProgressBar("gui_healthBar.txt"));
-	rageBar = Gui::gui.add(new Gui::ProgressBar("gui_rageBar.txt"));
-
+	healthBarRight = Gui::gui.add(new Gui::ProgressBar("gui_healthBarRight.txt"));
+	healthBarLeft = Gui::gui.add(new Gui::ProgressBar("gui_healthBarLeft.txt"));
 
 	/// 
-	efMovement = addEfect(new Efect::MouseMovement(50, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.006)));
+	efMovement = addEfect(new Efect::MouseMovement(50, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.014)));
 	//efMovement = addEfect(new Efect::StaticMovement(40, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.005)));
 	addEfect(new Efect::FollowCamera(Efect::FollowCamera::positionOnlySmooth))->setLerpPosition(0.125);
 
@@ -72,9 +77,14 @@ void Player::onUpdate(sf::Time dt)
 	sf::Listener::setPosition(sf::Vector3f(Player::player->getPosition().x, 0, Player::player->getPosition().y));
 	walking_sound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
 
-	efHealth->damage((0.915- lightController.lastLightIntensitivitySq)* 0.2,this);
-	
-	healthBar->setProgress(efHealth->actual / efHealth->max);
+	float light = sqrt(lightController.lastLightIntensitivitySq);
+	if (light< 0.97f)
+		efHealth->damage((0.97f - light)* 0.4f, this);
+	else
+		efHealth->heal((light - 0.97f) * 2., this);
+
+	healthBarLeft->setProgress(efHealth->actual / efHealth->max);
+	healthBarRight->setProgress(efHealth->actual / efHealth->max);
 	
 	if (efMovement->getArrived() == false)
 	{
@@ -102,6 +112,7 @@ void Player::onUpdate(sf::Time dt)
 
 		if (((Vector2D)cam.mapPixelToCoords(Mouse::getPosition(wnd)) - ActorBonfire::bonfire->getPosition())
 			.getLenghtSq() < actionDistance*actionDistance)
+			if( getPosition().getLenghtSq() < 300 * 300)
 			ActorBonfire::bonfire->inflame(this, efMovement, efModel->modelsUpdate[4]);
 
 	}
@@ -132,8 +143,9 @@ void Player::onUpdate(sf::Time dt)
 bool Player::onDeath(sf::Time dt)
 {
 	Actor::onDeath(dt);
-	Gui::gui.remove(healthBar);
-	Gui::gui.remove(rageBar);
+	Gui::gui.remove(healthBarLeft);
+	Gui::gui.remove(healthBarRight);
+
 	Game::stateManager.setState(new StateDeath);
 	return true;
 }

@@ -148,9 +148,6 @@
     <Text Include="gui_text.txt">
       <Filter>Resource\Gui</Filter>
     </Text>
-    <Text Include="gui_healthBar.txt">
-      <Filter>Resource\Gui</Filter>
-    </Text>
     <Text Include="model_bonfire.txt">
       <Filter>Resource\models</Filter>
     </Text>
@@ -162,9 +159,6 @@
     </Text>
     <Text Include="anim_rule.txt">
       <Filter>Resource\animations</Filter>
-    </Text>
-    <Text Include="gui_rageBar.txt">
-      <Filter>Resource\Gui</Filter>
     </Text>
     <Text Include="model_tree.txt">
       <Filter>Resource\models</Filter>
@@ -186,6 +180,21 @@
     </Text>
     <Text Include="anim_birdFly.txt">
       <Filter>Resource\animations</Filter>
+    </Text>
+    <Text Include="gui_healthBarRight.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_healthBarLeft.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_leftTimeBarLeft.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_leftTimeBarRight.txt">
+      <Filter>Resource\Gui</Filter>
+    </Text>
+    <Text Include="gui_box.txt">
+      <Filter>Resource\Gui</Filter>
     </Text>
   </ItemGroup>
 </Project>

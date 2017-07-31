@@ -45,7 +45,9 @@
 	< type =script;	path =model_tree.txt;			id =5>
 	< type =script;	path =model_hrust.txt;			id =6>
 	< type =script;	path =model_grass.txt;			id =7>
-	/// sounds
-	< type =sound;	path =fireball.wav;		id =1>
 	< type =script;	path =model_bird.txt;			id =8>
+
+	/// sounds
+	< type =sound;	path =fireball.wav;				id =1>
+	< type =sound;	path =dmg sounds\\3_.wav;		id =2>
 <\>
