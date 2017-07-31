@@ -13,7 +13,7 @@ void LightController::update(Camera& cam)
 	// set new darkness level
 	cam.setDarkness(
 		clamp(
-			pow(bestLightIntensitivitySq, 4.f)
+			pow(bestLightIntensitivitySq, 5.f)
 
 			, minimalLight, maximalLight)
 	);

@@ -6,13 +6,14 @@ class ActorPrayer : public Game::Actor
 {
 public:
 	static int n;
-	ActorPrayer();
+	ActorPrayer(bool _agressive = false);
 
 	enum Mode
 	{
 		walkRandom,
 		collect,
-		sacrifice
+		sacrifice,
+		atack
 	}mode;
 
 	void setMode(Mode s);
@@ -24,6 +25,7 @@ public:
 
 	Graphics::AnimationController *animWalk;
 	Graphics::AnimationController *animRule;
+	Graphics::AnimationController *animCast;
 
 
 	Efect::MovementAim *efMovement; 
@@ -36,8 +38,11 @@ public:
 
 	bool agressive{false};
 private:
+	bool waitingFire{ false };
 	bool readyToBurn{false};
+	bool readyToShoot{false};
 	bool is_walking_activated = true;
 	sf::Music walking_sound;
+	sf::Sound dmgSound;
 };
 

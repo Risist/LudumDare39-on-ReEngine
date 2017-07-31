@@ -19,7 +19,7 @@ void ActorBird::onInit()
 
 	animFly = &efAnim->addAnimation("anim_birdFly.txt")->getAnimation();
 	/// physics
-	addEfect(new Efect::Rigidbody(15, 20));
+	addEfect(new Efect::Rigidbody(7, 20));
 	addEfect(new Efect::ColliderCircle(50.f));
 	addEfect(new Efect::UpdateTransform());
 	
@@ -28,9 +28,9 @@ void ActorBird::onInit()
 	efHealth = addEfect(new Efect::Health(50))->setRegeneration(0, 0.6);
 	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(); }))
 		->setLayer(Game::Layers::blood);
-	addEfect(new Efect::DamageOnCollision(10))->allowdedToDeal = [](Game::Actor& other, b2Contact&) { return !dynamic_cast<ActorBird*>(&other); };
+	addEfect(new Efect::DamageOnCollision(2))->allowdedToDeal = [](Game::Actor& other, b2Contact&) { return !dynamic_cast<ActorBird*>(&other); };
 
-	efMovement = addEfect(new Efect::MovementAim(70, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.025)));
+	efMovement = addEfect(new Efect::MovementAim(55, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.025)));
 	efRandomMovement = addEfect(new Efect::RandomMovement(efMovement))
 		->setRadius(100.f, 300.f)->setOffset(Vector2D(0, -100))->setTime(sf::seconds(0.5f), sf::seconds(0.95f));
 
@@ -49,7 +49,7 @@ void ActorBird::onUpdate(sf::Time dt)
 	switch (mode)
 	{
 	case ActorBird::WalkToPlayer:
-		efMovement->setDestination(Player::player->getPosition(), 1.f);
+		efMovement->setDestination(Player::player->getPosition(), 10.f);
 		if (clockChangeBehaviour.getElapsedTime() > timeChangeBehaviour || 
 			(getPosition()- Player::player->getPosition()).getLenghtSq() < 100 * 100)
 			setMode(HideInShadows);
@@ -81,10 +81,10 @@ void ActorBird::setMode(Mode _mode)
 	switch (mode)
 	{
 	case ActorBird::WalkToPlayer:
-		timeChangeBehaviour = sf::seconds(randRange(5.f, 10.f));
+		timeChangeBehaviour = sf::seconds(randRange(2.5f, 5.f));
 		break;
 	case ActorBird::HideInShadows:
-		timeChangeBehaviour = sf::seconds(randRange(5.f, 10.f));
+		timeChangeBehaviour = sf::seconds(randRange(4.f, 7.f));
 		break;
 	}
 }

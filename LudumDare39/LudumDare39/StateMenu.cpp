@@ -20,7 +20,7 @@ void StateMenu::onStart()
 		->setName("Start Game"); pos.y += offsetY;
 
 	auto credits = Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(pos)
-		->setName("Credits"); pos.y += offsetY*2;
+		->setName("Credits"); pos.y += offsetY*5;
 
 	auto exit = Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(pos)
 		->setName("Exit"); pos.y += offsetY;

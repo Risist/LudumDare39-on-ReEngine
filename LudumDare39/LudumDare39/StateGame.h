@@ -29,7 +29,7 @@ protected: /// spawn functions
 	/// creates and adds simple obstacle - for testing
 	Game::Actor* addObstacle(const Vector2D& position, Angle rotation = Angle::zero);
 
-	Game::Actor* addPrayer(const Vector2D& position, Angle rotation = Angle::zero);
+	Game::Actor* addPrayer(const Vector2D& position, Angle rotation = Angle::zero, bool agressive = false);
 
 	Game::Actor* addBurshwood(const Vector2D& position, Angle rotation = Angle::zero);
 
@@ -45,6 +45,12 @@ private:
 	sf::Music introVoice;
 	sf::Music music;
 
+	Gui::ProgressBar *leftTimeBarLeft, *leftTimeBarRight;
+
 	sf::Clock nextState;
 	bool atVoice{ false };
+
+	vector<string> tips;
+	sf::Clock nextTip;
+	Gui::Text *tTip;
 };
