@@ -8,9 +8,11 @@
 #include "ActorBird.h"
 
 int StateGame::day;
+StateGame *StateGame::stateGame = nullptr;
 
 void StateGame::onStart()
 {
+	stateGame = this;
 	music.openFromFile("..\\..\\Resources\\Audio\\inn_wolf.wav");
 	music.setPitch(0.95);
 	music.setVolume(30);
@@ -31,6 +33,7 @@ void StateGame::onStart()
 	/// insert game objects
 
 	ActorPrayer::n = 0;
+	ActorBird::n = 0;
 	auto player = addPlayer(Vector2D(0, 200), Degree(180));
  
 	lightController.observer = player;
@@ -110,6 +113,7 @@ void StateGame::onStart()
 	}
 	tTip->clear() << tips[sqrt(randRange(0, 1))*tips.size()];
 
+	///lightController.lastLightIntensitivitySq = 1;
 }
 
 Game::State * StateGame::onUpdate(sf::Time dt)
@@ -158,9 +162,9 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 
 
 		if (nextState.getElapsedTime() > sf::seconds(20) && ActorBird::n < 3 &&
-			clockSpawn.getElapsedTime() > sf::seconds(randRange((10+ActorBird::n)*stateCompletePercent, 10+ +1.*ActorBird::n )))
+			clockSpawn.getElapsedTime() > sf::seconds(randRange((15+ActorBird::n)*stateCompletePercent, 25+ + 5*ActorBird::n )))
 		{
-			addBird(Vector2D(0, randRange(1200.f, 1700.f)).getRotated(), randRange(Angle::zero, Angle::full));
+			addBird(Vector2D(0, randRange(1600.f, 2300.f)).getRotated(), randRange(Angle::zero, Angle::full));
 			clockSpawn.restart();
 		}
 		else if (day > 2)
@@ -168,7 +172,7 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 			if (nextState.getElapsedTime() > sf::seconds(20) && ActorPrayer::n < 4 &&
 				clockSpawn.getElapsedTime() > sf::seconds(randRange((10 - 0.5*day + ActorPrayer::n)* stateCompletePercent, 15 + 1.5*ActorPrayer::n)))
 			{
-				addPrayer(Vector2D(0, randRange(1200.f, 1700.f)).getRotated(), randRange(Angle::zero, Angle::full), true);
+				addPrayer(Vector2D(0, randRange(1500.f, 2000.f)).getRotated(), randRange(Angle::zero, Angle::full), true);
 				clockSpawn.restart();
 			}
 		}

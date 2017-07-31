@@ -7,6 +7,7 @@
 class StateGame : public Game::State
 {
 public:
+	static StateGame *stateGame;
 	StateGame(int _day) { day = _day;  }
 
 	/// overrided events
@@ -18,7 +19,7 @@ public:
 	/// initialize player controls
 	void initKeys();
 
-protected: /// spawn functions
+///protected: /// spawn functions
 	
 	/// creates and adds to world player character at provided position and rotation
 	Game::Actor* addPlayer(const Vector2D& position, Angle rotation = Angle::zero);

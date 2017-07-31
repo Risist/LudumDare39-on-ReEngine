@@ -12,11 +12,11 @@ void ActorBlood::onInit()
 	efModel = addEfect(new Efect::Model((ResId)3));
 	addEfect(new Efect::RemoveAfterDelay(bloodLifeTime ));
 
-	deathSound.setBuffer(soundInst[2]);
+	deathSound.setBuffer(soundInst[indexSound]);
 	deathSound.setPitch(randRange(0.9, 1.1));
 	deathSound.setVolume(100);
 	deathSound.setMinDistance(100.f);
-	deathSound.setAttenuation(1.f);
+	deathSound.setAttenuation(0.1f);
 	deathSound.play();
 
 }
