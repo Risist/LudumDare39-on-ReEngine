@@ -185,12 +185,15 @@
     <Text Include="anim_walk.txt" />
     <Text Include="gui_background.txt" />
     <Text Include="gui_bookText.txt" />
+    <Text Include="gui_box.txt" />
     <Text Include="gui_button.txt" />
     <Text Include="gui_buttonHalf.txt" />
     <Text Include="gui_checkBox.txt" />
     <Text Include="gui_colorBar.txt" />
-    <Text Include="gui_healthBar.txt" />
-    <Text Include="gui_rageBar.txt" />
+    <Text Include="gui_healthBarLeft.txt" />
+    <Text Include="gui_healthBarRight.txt" />
+    <Text Include="gui_leftTimeBarLeft.txt" />
+    <Text Include="gui_leftTimeBarRight.txt" />
     <Text Include="gui_setBar.txt" />
     <Text Include="gui_text.txt" />
     <Text Include="gui_tutorialBook.txt" />

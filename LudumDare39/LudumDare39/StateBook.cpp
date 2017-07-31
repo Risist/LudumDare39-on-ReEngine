@@ -12,7 +12,7 @@ void StateBook::onStart()
 {
 	tale.openFromFile("..\\..\\Resources\\Audio\\introTale.wav");
 	tale.setPitch(0.95);
-	tale.setVolume(50);
+	tale.setVolume(40);
 	tale.play();
 
 	Gui::gui.add(new Gui::Button("gui_tutorialBook.txt"));
@@ -46,7 +46,7 @@ void StateBook::onStart()
 	}
 	else if (day == 2)
 	{
-		Gui::gui.add(new Gui::Text("gui_bookText.txt"))->setStr("April 5th")->setPos(Vector2D(375, 100))->setSize(30);
+		Gui::gui.add(new Gui::Text("gui_bookText.txt"))->setStr("April 2nd")->setPos(Vector2D(375, 100))->setSize(30);
 
 		Gui::gui.add(new Gui::Text("gui_bookText.txt"))->setPos(Vector2D(1225, 150))->setStr(
 			"We\'re here just a few days\n"
@@ -66,6 +66,28 @@ void StateBook::onStart()
 			"Press Q key to throw\n"
 			"a fireball from campfire\n"
 		);
+	}
+	else if (day == 3)
+	{
+		Gui::gui.add(new Gui::Text("gui_bookText.txt"))->setStr("April 3th")->setPos(Vector2D(375, 100))->setSize(30);
+
+		Gui::gui.add(new Gui::Text("gui_bookText.txt"))->setPos(Vector2D(810, 150))->setStr(
+			"The night will never end!\n"
+			"My hope is almost lost\n"
+			"Friends ...\n"
+			"Or people who used to be\n"
+			"Are they mad?\n"
+			"Am I ???\n"
+		);
+
+		/*
+		Gui::gui.add(new Gui::Text("gui_bookText.txt"))->setPos(Vector2D(1100, 300))->setStr(
+			"Be carefull, allies can become mad\n"
+			"Then you have to kill them\n"
+			"\n"
+			"Press Q key to throw\n"
+			"a fireball from campfire\n"
+		);*/
 	}
 
 	auto startGame = Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(Vector2D(700,600))

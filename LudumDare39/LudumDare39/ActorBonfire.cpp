@@ -16,12 +16,11 @@ void ActorBonfire::onInit()
 	bonfire = this;
 	
 	bonfire_sound.openFromFile("..\\..\\Resources\\Audio\\bonfire_sound.wav");
-	bonfire_sound.setPitch(0.95);
 	bonfire_sound.setVolume(100);
 	bonfire_sound.setLoop(true);
 	bonfire_sound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
-	bonfire_sound.setMinDistance(300.f);
-	bonfire_sound.setAttenuation(1.f);
+	bonfire_sound.setMinDistance(400.f);
+	bonfire_sound.setAttenuation(0.5f);
 	bonfire_sound.play();
 	
 
@@ -30,7 +29,7 @@ void ActorBonfire::onInit()
 	addEfect(new Efect::ColliderCircle(75.f, 1.f, Vector2D(), true));
 	efDmg = addEfect(new Efect::DamageOnCollision(10));
 
-	efLight = addEfect(new EfectLightSource(0, 0.0003, actualIntensitivity));
+	efLight = addEfect(new EfectLightSource(125, 0.0003, actualIntensitivity));
 
 	efParticle = addEfect(new Efect::Particle())->addEmitter(
 		Emitter().setEmissionRate(120).setLifetime([]() { return sf::seconds(randRange(0.5f, 1.f)); })
@@ -57,7 +56,7 @@ void ActorBonfire::onInit()
 		{
 			if (clockShoot.getElapsedTime() > sf::seconds(0.05 / pow(actualIntensitivity, 20)) && actualIntensitivity > 0.8)
 			{
-				actualIntensitivity *= 0.999;
+				actualIntensitivity *= 0.99975;
 				clockShoot.restart();
 				return new ActorFireball(Vector2D(cam.mapPixelToCoords((Vector2D)Mouse::getPosition(wnd) - getPosition())).angle(), actualIntensitivity);
 			}
@@ -75,7 +74,9 @@ void ActorBonfire::onUpdate(sf::Time dt)
 	efLight->maxIntensitivityRatio = clamp(efLight->maxIntensitivityRatio, 0.8f, actualIntensitivity);
 	actualIntensitivity *= 0.99985;
 
-
+	bonfire_sound.setPitch(0.3 + 0.7*powf(actualIntensitivity, 12));
+	bonfire_sound.setVolume(100 * powf(actualIntensitivity, 12));
+	
 	efDmg->damage = 10 * actualIntensitivity;
 	
 	efParticle->particleSystem.clearEmitters();
@@ -103,8 +104,8 @@ bool ActorBonfire::inflame(Game::Actor * creator, Efect::MovementAim* efMovement
 {
 	static const float actionDistance = 350.f;
 	
-	if ((creator->getPosition() - getPosition()).getLenghtSq() > actionDistance*actionDistance)
-		return false;
+	//if ((creator->getPosition() - getPosition()).getLenghtSq() > actionDistance*actionDistance)
+		//return false;
 
 	if (burshwood->color.a == 0)
 		return false;

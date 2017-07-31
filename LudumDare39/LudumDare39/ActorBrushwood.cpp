@@ -10,7 +10,8 @@ void ActorBrushwood::onInit()
 {
 	Actor::onInit();
 
-	addEfect(new Efect::Model(6))->model.color = Color_f(randRange(100, 155), randRange(100, 155), randRange(100, 155), 200);
+	efModel = addEfect(new Efect::Model(6));
+	efModel->model.color = Color_f(randRange(100, 155), randRange(100, 155), randRange(100, 155), 200);
 
 }
 
@@ -38,7 +39,7 @@ bool ActorBrushwood::collect(Game::Actor * collector, Efect::MovementAim * efMov
 	if (handBurshwood->color.a != 0)
 		return false;
 
-	handBurshwood->color.a = 255.f;
+	handBurshwood->color = efModel->model.color;
 
 	efMovement->reset();
 	efMovement->efRotDir->direction = Vector2D(getPosition() - collector->getPosition()).angle();

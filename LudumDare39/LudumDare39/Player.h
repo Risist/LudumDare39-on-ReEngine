@@ -29,10 +29,10 @@ public:
 	Efect::Model *efModel;
 
 
-	Gui::ProgressBar* healthBar;
-	Gui::ProgressBar* rageBar;
+	Gui::ProgressBar *healthBarLeft, *healthBarRight;
 
 private:
 	sf::Music walking_sound;
 	bool is_walking_activated = true;
+	sf::Sound dmgSound;
 };

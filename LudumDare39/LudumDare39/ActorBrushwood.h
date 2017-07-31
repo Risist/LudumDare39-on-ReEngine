@@ -12,5 +12,6 @@ public:
 
 	bool collect(Game::Actor* collector, Efect::MovementAim* efMovement, Graphics::Model* handBurshwood);
 
+	Efect::Model* efModel;
 };
 

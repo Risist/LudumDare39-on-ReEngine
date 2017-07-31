@@ -3,8 +3,9 @@
 #include "StateMenu.h"
 #include "StateBook.h"
 #include "StateDeath.h"
+#include "StateCredits.h"
 
-#define TEST_FPS
+//#define TEST_FPS
 
 void init()
 {
@@ -23,8 +24,9 @@ void init()
 
 	//Game::stateManager.setState(new StateBook());
 	//Game::stateManager.setState(new StateDeath());
-	//Game::stateManager.setState( new StateGame(2) );
-	Game::stateManager.setState(new StateMenu);
+	Game::stateManager.setState(new StateCredits);
+	///Game::stateManager.setState( new StateGame(2) );
+	//Game::stateManager.setState(new StateMenu);
 
 }
 
