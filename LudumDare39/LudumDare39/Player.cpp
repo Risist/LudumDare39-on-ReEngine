@@ -57,7 +57,7 @@ void Player::onInit()
 	efHealth = addEfect(new Efect::Health(70*StateGame::day))->setRegeneration(0, 0.6)
 		->setDamageReaction([&](float32, Game::Actor* owner) {if (owner != this && dmgSound.getStatus() != Sound::Playing) dmgSound.play(); });
 
-	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(2); }))
+	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(3); }))
 		->setLayer(Game::Layers::blood);
 
 	healthBarRight = Gui::gui.add(new Gui::ProgressBar("gui_healthBarRight.txt"));
@@ -120,12 +120,10 @@ void Player::onUpdate(sf::Time dt)
 			if (dot > 0.6)
 			{
 				ActorBonfire::bonfire->inflame(this, efMovement, efModel->modelsUpdate[4]);
-				//readyToUse = false;
 			}
 		}
 		else
 		{
-			cout << readyToUse << endl;
 			if (readyToUse)
 			{
 				auto burshood = (ActorBrushwood*)StateGame::stateGame->addBurshwood(getPosition() - facing * 150);

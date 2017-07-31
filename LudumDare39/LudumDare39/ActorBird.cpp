@@ -34,7 +34,7 @@ void ActorBird::onInit()
 
 
 	efHealth = addEfect(new Efect::Health(50))->setRegeneration(0, 0.6);
-	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(2); }))
+	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(3); }))
 		->setLayer(Game::Layers::blood);
 	addEfect(new Efect::DamageOnCollision(2))->allowdedToDeal = [](Game::Actor& other, b2Contact&) { return !dynamic_cast<ActorBird*>(&other); };
 
