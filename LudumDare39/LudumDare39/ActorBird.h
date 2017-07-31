@@ -28,5 +28,7 @@ public:
 private:
 	sf::Clock clockChangeBehaviour;
 	sf::Time timeChangeBehaviour;
+	sf::Music birdSound;
+	bool isFlyingActivated = true;
 };
 

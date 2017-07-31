@@ -21,7 +21,7 @@ void ActorBonfire::onInit()
 	bonfire_sound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
 	bonfire_sound.setMinDistance(400.f);
 	bonfire_sound.setAttenuation(0.5f);
-	bonfire_sound.play();
+	//bonfire_sound.play();
 	
 
 	addEfect(new Efect::Model((ResId)4));
@@ -69,6 +69,19 @@ void ActorBonfire::onInit()
 void ActorBonfire::onUpdate(sf::Time dt)
 {
 	Actor::onUpdate(dt);
+	//bar of bonfire's power
+	sf::RectangleShape barOfPowerUnder(sf::Vector2f(200, 15));
+	barOfPowerUnder.setOrigin(sf::Vector2f(barOfPowerUnder.getSize().x*0.5, barOfPowerUnder.getSize().y*0.5));
+	barOfPowerUnder.setPosition(sf::Vector2f(getPosition().x, getPosition().y - 120));
+	barOfPowerUnder.setFillColor(sf::Color(50, 50, 50, 180));
+	cam.draw(barOfPowerUnder);
+	float fillPercentage = (actualIntensitivity - 0.85 )*6.666666;
+	std::cout << actualIntensitivity << std::endl;
+	sf::RectangleShape barOfPower(sf::Vector2f(clamp(fillPercentage,0.f,1.f) * 200, 15));
+	barOfPower.setOrigin(sf::Vector2f(barOfPower.getSize().x*0.5, barOfPower.getSize().y*0.5));
+	barOfPower.setPosition(sf::Vector2f(getPosition().x, getPosition().y - 120));
+	barOfPower.setFillColor(sf::Color(255,0,0,100));
+	cam.draw(barOfPower);
 
 	efLight->maxIntensitivityRatio += randRange(-0.007, 0.009);
 	efLight->maxIntensitivityRatio = clamp(efLight->maxIntensitivityRatio, 0.8f, actualIntensitivity);

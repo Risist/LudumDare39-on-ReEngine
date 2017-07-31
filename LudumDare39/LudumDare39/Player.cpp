@@ -27,7 +27,7 @@ void Player::onInit()
 	dmgSound.setVolume(60);
 	dmgSound.setMinDistance(200.f);
 	dmgSound.setAttenuation(0.25f);
-	
+
 
 	//for 3D sound
 	sf::Listener::setDirection(sf::Vector3f(0.f, 0.f, -1.f));
@@ -57,7 +57,7 @@ void Player::onInit()
 	efHealth = addEfect(new Efect::Health(70*StateGame::day))->setRegeneration(0, 0.6)
 		->setDamageReaction([&](float32, Game::Actor* owner) {if (owner != this && dmgSound.getStatus() != Sound::Playing) dmgSound.play(); });
 
-	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(); }))
+	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(2); }))
 		->setLayer(Game::Layers::blood);
 
 	healthBarRight = Gui::gui.add(new Gui::ProgressBar("gui_healthBarRight.txt"));
@@ -77,6 +77,7 @@ void Player::onUpdate(sf::Time dt)
 	//for 3D sound
 	sf::Listener::setPosition(sf::Vector3f(Player::player->getPosition().x, 0, Player::player->getPosition().y));
 	walking_sound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
+	dmgSound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
 
 	float light = sqrt(lightController.lastLightIntensitivitySq);
 	if (light< 0.97f)
