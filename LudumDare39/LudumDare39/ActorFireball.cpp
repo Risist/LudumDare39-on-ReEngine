@@ -20,7 +20,7 @@ void ActorFireball::onInit()
 	addEfect(new Efect::Rigidbody(10,10));
 	addEfect(new Efect::ColliderCircle(75.f));
 	addEfect(new Efect::UpdateTransform());
-	addEfect(new Efect::DamageOnCollision(25*powf(power,2)));
+	addEfect(new Efect::DamageOnCollision(20*powf(power,2)));
 	addEfect(new Efect::RemoveAfterDelay(sf::seconds(1.25f)));
 
 	efLight = addEfect(new EfectLightSource(50, 0.0003, 0.985));

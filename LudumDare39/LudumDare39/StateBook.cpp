@@ -89,8 +89,26 @@ void StateBook::onStart()
 			"a fireball from campfire\n"
 		);*/
 	}
+	else
+	{
+		Gui::gui.add(new Gui::Text("gui_bookText.txt"))->setStr("Night has gone!")->setPos(Vector2D(375, 100))->setSize(30);
+		
+		Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(Vector2D(350, 200))
+			->setName("Play day 1")->setEvent([=]() { Game::stateManager.setState(new StateGame(1)); });
 
-	auto startGame = Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(Vector2D(700,600))
+		Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(Vector2D(350, 300))
+			->setName("Play day 2")->setEvent([=]() { Game::stateManager.setState(new StateGame(2)); });
+
+		Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(Vector2D(350, 400))
+			->setName("Play day 3")->setEvent([=]() { Game::stateManager.setState(new StateGame(3)); });
+
+		
+		Gui::gui.add(new Gui::Text("gui_bookText.txt"))->setPos(Vector2D(975, 250))->setStr("   Congratulations from\n\n"
+			"Maciej \'Risist\' Dominiak\n\n"
+			"Marcin \'LiLatee\' Hradowicz");
+	}
+
+	if(day < 4) auto startGame = Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(Vector2D(700,600))
 		->setName("Play")->setEvent([=]() { Game::stateManager.setState(new StateGame(day) ); });
 
 	auto back = Gui::gui.add(new Gui::NamedButton("gui_button.txt"))->setPos(Vector2D(350, 600))

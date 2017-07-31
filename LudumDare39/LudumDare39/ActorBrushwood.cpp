@@ -1,5 +1,6 @@
 #include "ActorBrushwood.h"
 #include "Player.h"
+#include "utilities.h"
 
 
 ActorBrushwood::ActorBrushwood()
@@ -18,6 +19,8 @@ void ActorBrushwood::onInit()
 void ActorBrushwood::onUpdate(sf::Time dt)
 {
 	Actor::onUpdate(dt);
+
+	draw_interact(getPosition());
 
 	static const float actionDistance = 125;
 	if (actionMap.isActive("fire3"))

@@ -80,7 +80,7 @@ void ActorBonfire::onUpdate(sf::Time dt)
 	sf::RectangleShape barOfPower(sf::Vector2f(clamp(fillPercentage,0.f,1.f) * 200, 15));
 	barOfPower.setOrigin(sf::Vector2f(barOfPower.getSize().x*0.5, barOfPower.getSize().y*0.5));
 	barOfPower.setPosition(sf::Vector2f(getPosition().x, getPosition().y - 120));
-	barOfPower.setFillColor(sf::Color(75,20,20,220));
+	barOfPower.setFillColor(sf::Color(238,210,28,220));
 	cam.draw(barOfPower);
 
 	efLight->maxIntensitivityRatio += randRange(-0.007, 0.009);

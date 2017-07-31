@@ -5,7 +5,7 @@
 #include "ActorBlood.h"
 #include "ActorBonfire.h"
 #include "StateDeath.h"
-
+#include "utilities.h"
 #include "LightController.h"
 #include "ActorBrushwood.h"
 
@@ -54,7 +54,7 @@ void Player::onInit()
 	
 
 	/// health
-	efHealth = addEfect(new Efect::Health(70*StateGame::day))->setRegeneration(0, 0.6)
+	efHealth = addEfect(new Efect::Health(90*StateGame::day))->setRegeneration(0, 0.6)
 		->setDamageReaction([&](float32, Game::Actor* owner) {if (owner != this && dmgSound.getStatus() != Sound::Playing) dmgSound.play(); });
 
 	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(3); }))
@@ -78,12 +78,14 @@ void Player::onUpdate(sf::Time dt)
 	sf::Listener::setPosition(sf::Vector3f(Player::player->getPosition().x, 0, Player::player->getPosition().y));
 	walking_sound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
 	dmgSound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
+	
+	draw_bar(efHealth->actual / efHealth->max, getPosition());
 
 	float light = sqrt(lightController.lastLightIntensitivitySq);
 	if (light< 0.97f)
 		efHealth->damage((0.97f - light)* 0.4f, this);
 	else
-		efHealth->heal((light - 0.97f) * 2., this);
+		efHealth->heal((light - 0.97f) * 3.5, this);
 
 	healthBarLeft->setProgress(efHealth->actual / efHealth->max);
 	healthBarRight->setProgress(efHealth->actual / efHealth->max);
@@ -124,7 +126,7 @@ void Player::onUpdate(sf::Time dt)
 		}
 		else
 		{
-			if (readyToUse)
+			if (readyToUse && efModel->modelsUpdate[4]->color.a != 0)
 			{
 				auto burshood = (ActorBrushwood*)StateGame::stateGame->addBurshwood(getPosition() - facing * 150);
 				burshood->efModel->setColor(efModel->modelsUpdate[4]->color);

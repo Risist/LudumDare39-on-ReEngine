@@ -2,6 +2,7 @@
 #include "ActorBlood.h"
 #include "Layers.h"
 #include "Player.h"
+#include "utilities.h"
 
 int ActorBird::n = 0;
 
@@ -33,10 +34,10 @@ void ActorBird::onInit()
 	
 
 
-	efHealth = addEfect(new Efect::Health(50))->setRegeneration(0, 0.6);
-	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(3); }))
+	efHealth = addEfect(new Efect::Health(40))->setRegeneration(0, 0.6);
+	addEfect(new Efect::SpawnOnDeath([]() { return new ActorBlood(4); }))
 		->setLayer(Game::Layers::blood);
-	addEfect(new Efect::DamageOnCollision(2))->allowdedToDeal = [](Game::Actor& other, b2Contact&) { return !dynamic_cast<ActorBird*>(&other); };
+	addEfect(new Efect::DamageOnCollision(2.5))->allowdedToDeal = [](Game::Actor& other, b2Contact&) { return !dynamic_cast<ActorBird*>(&other); };
 
 	efMovement = addEfect(new Efect::MovementAim(55, new Efect::RotateToDirection(Efect::RotateToDirection::smoothPhysics, 0.025)));
 	efRandomMovement = addEfect(new Efect::RandomMovement(efMovement))
@@ -48,6 +49,8 @@ void ActorBird::onInit()
 void ActorBird::onUpdate(sf::Time dt)
 {
 	Actor::onUpdate(dt);
+
+	draw_bar(efHealth->actual / efHealth->max, getPosition());
 
 	birdSound.setPosition(Vector3f(getPosition().x, 0, getPosition().y));
 

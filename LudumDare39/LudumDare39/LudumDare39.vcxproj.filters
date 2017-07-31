@@ -45,6 +45,7 @@
     <ClCompile Include="ActorBird.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
+    <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Layers.h" />
@@ -90,6 +91,7 @@
     <ClInclude Include="ActorBird.h">
       <Filter>Actors</Filter>
     </ClInclude>
+    <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource">

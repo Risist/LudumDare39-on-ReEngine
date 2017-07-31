@@ -4,6 +4,7 @@
 #include "ActorBonfire.h"
 #include "StateGame.h"
 #include "ActorFireball.h"
+#include "utilities.h"
 
 int ActorPrayer::n{0};
 ActorPrayer::ActorPrayer(bool _agressive) : agressive(_agressive)
@@ -80,6 +81,9 @@ void ActorPrayer::onUpdate(sf::Time dt)
 
 	walking_sound.setPosition(sf::Vector3f(getPosition().x, 0.f, getPosition().y));
 	dmgSound.setPosition(sf::Vector3f(getPosition().x, 0.f, getPosition().y));
+
+	draw_bar(efHealth->actual / efHealth->max, getPosition());
+
 
 	if (efMovement->getArrived() == false)
 	{

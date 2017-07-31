@@ -51,4 +51,5 @@
 	< type =sound;	path =fireball.wav;				id =1>
 	< type =sound;	path =dmg sounds\\3_.wav;		id =2>
 	< type =sound;	path =Death.wav;				id =3>
+	< type =sound;	path =death_bird.wav;			id =4>
 <\>

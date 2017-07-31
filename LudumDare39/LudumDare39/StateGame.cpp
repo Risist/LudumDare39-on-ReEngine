@@ -85,11 +85,15 @@ void StateGame::onStart()
 		tips.push_back("Press E key to interact");
 		tips.push_back("Press E key to interact");
 		tips.push_back("Press E key to interact");
+		tips.push_back("Press ESC... to escape ;)");
 		tips.push_back("Click on the map to move");
 		tips.push_back("Avoid darkness");
 		tips.push_back("Wait to end of the night");
 		tips.push_back("Keep fire lit");
 		tips.push_back("Stay in light to heal");
+		tips.push_back("Press P to restart the level");
+		tips.push_back("You are able to replace woods");
+		tips.push_back("While carring woods press E to drop it");
 		if (day > 1)
 		{
 			tips.push_back("Press Q key to shoot a fireball");
@@ -155,25 +159,29 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 	}
 	else 
 	{
-		float stateMaxTime = 45 * (2 + day);
+		float stateMaxTime = 30 * (2 + day);
 		float stateCompletePercent = nextState.getElapsedTime().asSeconds() / stateMaxTime;
 		leftTimeBarLeft->setProgress( stateCompletePercent);
 		leftTimeBarRight->setProgress(stateCompletePercent);
 
-
-		if (nextState.getElapsedTime() > sf::seconds(20) && ActorBird::n < 3 &&
-			clockSpawn.getElapsedTime() > sf::seconds(randRange((15+ActorBird::n)*stateCompletePercent, 25+ + 5*ActorBird::n )))
+		if (nextState.getElapsedTime() > sf::seconds(20) &&
+			clockSpawn.getElapsedTime() > sf::seconds(randRange((15 + ActorBird::n)*(1-stateCompletePercent), 25 + 5 * ActorBird::n)))
 		{
-			addBird(Vector2D(0, randRange(1600.f, 2300.f)).getRotated(), randRange(Angle::zero, Angle::full));
+			if (ActorBird::n < 3)
+			{
+				addBird(Vector2D(0, randRange(1600.f, 2300.f)).getRotated(), randRange(Angle::zero, Angle::full));
+				std::cout << "bird spawned " << ActorBird::n << std::endl;
+			}
 			clockSpawn.restart();
 		}
 		else if (day > 2)
 		{
-			if (nextState.getElapsedTime() > sf::seconds(20) && ActorPrayer::n < 4 &&
-				clockSpawn.getElapsedTime() > sf::seconds(randRange((10 - 0.5*day + ActorPrayer::n)* stateCompletePercent, 15 + 1.5*ActorPrayer::n)))
+			if (nextState.getElapsedTime() > sf::seconds(20) &&
+				clockSpawnMage.getElapsedTime() > sf::seconds(randRange((10 - 0.5*day + ActorPrayer::n)*(1 - stateCompletePercent), 15 + 1.5*ActorPrayer::n)))
 			{
-				addPrayer(Vector2D(0, randRange(1500.f, 2000.f)).getRotated(), randRange(Angle::zero, Angle::full), true);
-				clockSpawn.restart();
+				if (ActorPrayer::n < 4)
+					addPrayer(Vector2D(0, randRange(1500.f, 2000.f)).getRotated(), randRange(Angle::zero, Angle::full), true);
+				clockSpawnMage.restart();
 			}
 		}
 
