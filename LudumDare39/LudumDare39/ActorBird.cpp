@@ -13,8 +13,11 @@ void ActorBird::onInit()
 {
 	++n;
 	Actor::onInit();
-
+#ifndef RELEASE_PATHS
 	birdSound.openFromFile("..\\..\\Resources\\Audio\\bird_wings.wav");
+#else
+	birdSound.openFromFile("Resources\\Audio\\bird_wings.wav");
+#endif
 	birdSound.setPitch(randRange(0.9, 1.1));
 	birdSound.setLoop(true);
 	birdSound.setVolume(100);

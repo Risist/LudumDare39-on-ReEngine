@@ -13,13 +13,22 @@ StateGame *StateGame::stateGame = nullptr;
 void StateGame::onStart()
 {
 	stateGame = this;
+#ifndef RELEASE_PATHS
 	music.openFromFile("..\\..\\Resources\\Audio\\inn_wolf.wav");
+#else
+	music.openFromFile("Resources\\Audio\\inn_wolf.wav");
+#endif
+
 	music.setPitch(0.95);
 	music.setVolume(30);
 	music.setLoop(true);
 	music.play();
 
+#ifndef RELEASE_PATHS
 	introVoice.openFromFile("..\\..\\Resources\\Audio\\whenNight.wav");
+#else
+	introVoice.openFromFile("Resources\\Audio\\whenNight.wav");
+#endif
 	introVoice.setPitch(0.95);
 
 	/// game settings

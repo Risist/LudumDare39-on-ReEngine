@@ -14,8 +14,11 @@ void ActorBonfire::onInit()
 {
 	Game::Actor::onInit();
 	bonfire = this;
-	
+#ifndef RELEASE_PATHS
 	bonfire_sound.openFromFile("..\\..\\Resources\\Audio\\bonfire_sound.wav");
+#else
+	bonfire_sound.openFromFile("Resources\\Audio\\bonfire_sound.wav");
+#endif
 	bonfire_sound.setVolume(100);
 	bonfire_sound.setLoop(true);
 	bonfire_sound.setPosition(sf::Vector3f(getPosition().x, 0, getPosition().y));
@@ -128,7 +131,7 @@ bool ActorBonfire::inflame(Game::Actor * creator, Efect::MovementAim* efMovement
 	efMovement->reset();
 	efMovement->efRotDir->direction = Vector2D(getPosition() - creator->getPosition()).angle();
 
-	actualIntensitivity = clamp(actualIntensitivity +0.15f, 0.f, 1.f);
+	actualIntensitivity = clamp(actualIntensitivity +0.1f, 0.f, 1.f);
 
 	return true;
 }

@@ -10,7 +10,13 @@ StateBook::StateBook(int _day)
 
 void StateBook::onStart()
 {
+
+#ifndef RELEASE_PATHS
 	tale.openFromFile("..\\..\\Resources\\Audio\\introTale.wav");
+#else
+	tale.openFromFile("Resources\\Audio\\introTale.wav");
+#endif
+
 	tale.setPitch(0.95);
 	tale.setVolume(40);
 	tale.play();
