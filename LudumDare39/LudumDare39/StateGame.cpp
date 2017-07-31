@@ -110,7 +110,6 @@ void StateGame::onStart()
 	}
 	tTip->clear() << tips[sqrt(randRange(0, 1))*tips.size()];
 
-	lightController.lastLightIntensitivitySq = 1;
 }
 
 Game::State * StateGame::onUpdate(sf::Time dt)
@@ -136,7 +135,7 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 	
 
 	
-	/*if (day == 1 )
+	if (day == 1 )
 	{
 		leftTimeBarLeft->setProgress(nextState.getElapsedTime().asSeconds() / 95.f);
 		leftTimeBarRight->setProgress(nextState.getElapsedTime().asSeconds() / 95.f);
@@ -178,7 +177,7 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 		{
 			return new StateBook(day + 1);
 		}
-	}*/
+	}
 
 	if (nextTip.getElapsedTime() > sf::seconds(randRange(7,8)) )
 	{
@@ -189,7 +188,7 @@ Game::State * StateGame::onUpdate(sf::Time dt)
 	Game::world.onUpdate(dt);
 	cam.display(wnd);
 	
-	//lightController.update(cam);
+	lightController.update(cam);
 
 	if (actionMap.isActive("restart"))
 		return new StateGame(day);
